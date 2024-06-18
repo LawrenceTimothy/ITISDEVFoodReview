@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    
+    <h2>Log In</h2>
+
+    <form action="/login" method="post">
+
+    <input type="text" name="name" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required id="passwordInput">
+    <button type="submit">Login</button>
+
+    {{#if error}}
+        <p>{{error}}</p>
+    {{/if}}
+
+    <label>
+        <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
+    </label>
+
+    </form>
+
+    <a href="/register">Dont have an account? Register here!</a>
+
+</body>
+</html>
+
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('passwordInput');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
