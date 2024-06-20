@@ -12,11 +12,26 @@
     <form action="/register" method="post">
     
     <input type="text" name="name" placeholder="Name">
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="password" placeholder="Password" required id="passwordInput">
     <input type="submit">
+
+    <label>
+        <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
+    </label>
 
     </form>
 
 
 </body>
 </html>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('passwordInput');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>

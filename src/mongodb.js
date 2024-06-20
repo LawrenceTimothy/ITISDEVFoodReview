@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb://localhost:27017/ITISDEVFoodReview")
+mongoose.connect("mongodb://localhost:27017/FoodReviewTesting")
 .then(()=>{
     console.log("Connection to MongoDB is successful");
 })
