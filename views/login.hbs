@@ -7,24 +7,39 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    
-    <h2>Log In</h2>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Kitchen City Logo">
+        </div>
 
-    <form action="/login" method="post">
-        <input type="text" name="name" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required id="passwordInput">
-        <button type="submit">Login</button>
-        {{#if error}}
-            <p>{{error}}</p>
-        {{/if}}
+        <h2>Log In</h2>
 
-        <label>
-            <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
-        </label>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="name" placeholder="Username" required>
+            </div>
 
-    </form>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input type="password" id="passwordInput" name="password" placeholder="Password" required>
+            </div>
 
-    <a href="/register">Don't have an account? Register here!</a>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" onclick="togglePasswordVisibility()"> Show Password
+                </label>
+            </div>
+
+            <button type="submit">Login</button>
+
+            {{#if error}}
+                <p class="error">{{error}}</p>
+            {{/if}}
+        </form>
+
+        <p>Don't have an account? <a href="/register">Register here!</a></p>
+    </div>
 
     <script>
         function togglePasswordVisibility() {
@@ -36,6 +51,5 @@
             }
         }
     </script>
-
 </body>
 </html>
