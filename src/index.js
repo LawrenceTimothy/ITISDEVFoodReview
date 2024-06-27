@@ -4,8 +4,9 @@ const path = require("path")
 const hbs = require("hbs")
 const session = require("express-session")
 const collection = require("./mongodb")
+const exphbs = require("express-handlebars")
 
-const templatePath = path.join(__dirname, '../templates')
+const templatePath = path.join(__dirname, "../views")
 
 // Session Handling
 app.use((req, res, next) => {
@@ -13,9 +14,11 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.use(express.json())
 app.set("view engine", "hbs")
 app.set("views", templatePath)
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }))
 app.use(session({
     secret: 'secret_key',
