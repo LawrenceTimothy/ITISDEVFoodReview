@@ -32,9 +32,12 @@ body::after {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.logo img {
-    width: 100px;
-    margin-bottom: 20px;
+.logo {
+    width: 125px;
+    height: 125px;
+    margin: 0 auto 20px;
+    background: url('/images/logo.png') no-repeat center center;
+    background-size: contain;
 }
 
 h2 {
