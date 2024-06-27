@@ -13,7 +13,8 @@ function showRegister() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    showLogin();
+    // Show the register form by default on the register page
+    showRegister();
 });
 
 function validateEmail(inputId) {
@@ -30,4 +31,13 @@ function validateEmail(inputId) {
 
     warningElement.style.display = 'none';
     return true;
+}
+
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById('passwordInput');
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
 }
