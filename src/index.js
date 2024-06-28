@@ -16,6 +16,7 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.set("view engine", "hbs")
 app.set("views", templatePath)
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }))
 app.use(session({
     secret: 'secret_key',
