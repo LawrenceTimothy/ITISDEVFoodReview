@@ -1,0 +1,29 @@
+<!-- reviewtest.hbs RENZO TESTING Purposes-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Review {{foodName}}</title>
+</head>
+<body>
+  <h2>Reviewing: {{foodName}}</h2>
+  <form action="/submitReview" method="POST">
+    <input type="hidden" name="foodId" value="{{foodId}}">
+    <input type="hidden" name="foodName" value="{{foodName}}">
+    
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="reviewSubject">
+    
+    <label for="body">Body:</label>
+    <textarea id="body" name="reviewBody"></textarea>
+    
+    <label>Rating:</label>
+    <input type="radio" id="upvote" name="rating" value="reviewUpvotes">
+    <label for="upvote">Upvote</label>
+    <input type="radio" id="downvote" name="rating" value="reviewDownvotes">
+    <label for="downvote">Downvote</label>
+    
+    <button type="submit">Submit Review</button>
+  </form>
+</body>
+</html>
