@@ -5,6 +5,8 @@ const hbs = require("hbs")
 const session = require("express-session")
 const collection = require("./mongodb")
 const exphbs = require("express-handlebars")
+const Review = require('../models/reviewmodel.js') // RENZO: references review model
+const { v4: uuidv4 } = require('uuid'); // RENZO: FOR REVIEW ID GENERATION
 
 const templatePath = path.join(__dirname, "../views")
 
@@ -65,6 +67,43 @@ app.post("/login", async (req, res) => {
     }
 })
 
+//RENZO TEST 
+// Route to food test page
+app.get('/foodtest', (req, res) => {
+    res.render('foodtest');
+  });
+
+app.get('/reviewtest', (req, res) => {
+  const { foodId, foodName } = req.query;
+  res.render('reviewtest', { foodId, foodName });
+});
+
+// Review posting functionalityyt
+app.post('/submitReview', (req, res) => {
+    try {
+        let reviewDate = new Date();
+        const reviewData = new Review ({
+            reviewId : uuidv4(), // Unique identifier for the review
+            //reviewUser: req.user.reviewUser, // User's name. 
+            reviewSubject: req.body.reviewSubject, // Title of the review.
+            reviewDate: reviewDate, // Date of the review
+            reviewBody: req.body.reviewBody, // Body of the review.
+            foodName: req.body.foodName,// Food that was reviewed.
+            reviewUpvotes: req.body.reviewUpvotes, // Number of upvotes.
+            reviewDownvotes: req.body.reviewDownvotes, // Number of downvotes.
+    });
+      reviewData.save(); 
+      console.log(reviewData); // logs into the console for testing
+      res.redirect('/foodtest'); // redirect to foodtest
+    } catch (e) {
+        console.log(e);
+        //console.log(reviewData);
+    res.redirect('/foodtest'); // redirect to foodtest
+    }
+  });
+
+
+// RENZO TEST END
 app.get("/logout", (req, res) => {
     req.session.destroy(() => {
         res.redirect("/")
