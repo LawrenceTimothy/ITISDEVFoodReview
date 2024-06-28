@@ -35,24 +35,38 @@ app.get("/", (req, res) => {
 })
 
 app.get("/register", (req, res) => {
-    res.render("register")
-})
+    if (req.session.user) {
+        res.redirect("/");
+    } else {
+        res.render("register");
+    }
+});
+
 
 app.get("/login", (req, res) => {
     res.render("login")
 })
 
 app.post("/register", async (req, res) => {
-    const data = {
-        username: req.body.name,
-        password: req.body.password
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).send("Username and password are required.");
     }
 
-    await collection.insertMany([data])
+    try {
+        const newUser = new collection({
+            username: username,
+            password: password
+        });
+        await newUser.save();
+        req.session.user = newUser;
+        res.redirect("/");
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
-    req.session.user = data;
-    res.render("home", { user: req.body.name })
-})
 
 app.post("/login", async (req, res) => {
     try {
