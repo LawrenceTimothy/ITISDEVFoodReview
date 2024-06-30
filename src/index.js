@@ -102,13 +102,15 @@ app.post('/submitReview', (req, res) => {
         let reviewDate = new Date();
         const reviewData = new Review ({
             reviewId : uuidv4(), // Unique identifier for the review
-            //reviewUser: req.user.reviewUser, // User's name. 
+            reviewUser: 'placeholderuser',//req.user.reviewUser, // User's name. 
+            //userAvatar: req.user.pfp, // User's avatar
             reviewSubject: req.body.reviewSubject, // Title of the review.
             reviewDate: reviewDate, // Date of the review
             reviewBody: req.body.reviewBody, // Body of the review.
             foodName: req.body.foodName,// Food that was reviewed.
-            reviewUpvotes: req.body.reviewUpvotes, // Number of upvotes.
-            reviewDownvotes: req.body.reviewDownvotes, // Number of downvotes.
+            reviewVerdict: req.body.reviewVerdict === 'true', // Convert to boolean
+            reviewUpvotes: 0, // Number of review's upvotes.
+            reviewDownvotes: 0, // Number of review's downvotes.
     });
       reviewData.save(); 
       console.log(reviewData); // logs into the console for testing
