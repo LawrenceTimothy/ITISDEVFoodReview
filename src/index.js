@@ -5,6 +5,7 @@ const hbs = require("hbs")
 const session = require("express-session")
 const collection = require("./mongodb")
 const exphbs = require("express-handlebars")
+const fs = require('fs');
 const Review = require('../models/reviewmodel.js') // RENZO: references review model
 const { v4: uuidv4 } = require('uuid'); // RENZO: FOR REVIEW ID GENERATION
 
@@ -35,6 +36,26 @@ app.get("/", (req, res) => {
         res.render("login")
     }
 })
+
+// TODO: Update to include food ID in URL
+app.get("/reviews", (req, res) => {
+    const reviews = [
+        { title: 'Review 1', date: '2022-01-01', body: 'This is the first review.' },
+        { title: 'Review 2', date: '2022-01-02', body: 'This is the second review.' },
+        { title: 'Review 3', date: '2022-01-02', body: 'asdaj hjkhas jkhaskjdh jkashdjkash dkjsahdjks ahdjkashdjk ashjkahdkjas hkjahdkjash kjshadjk ahsjkdashjdkh\nasldalkdklsajdlkajdlasjlkdajldkjaskldjalkdj asdkl asjd kasd askld jsakld askl jaskld askldj aslkdj laskjd asklklasjd lkasjd klasdj sakld jasldj asldk ajsd laksdja lsdj' },
+        // Add more reviews as needed
+    ];
+    if (req.session.user) {
+        const data = Review.find();
+
+        // TODO: Temp data, change to result from mongoose model later.
+        res.render("review_page", { reviews: reviews });
+    }
+    else {
+        // TODO: Change to login
+        res.render("review_page", { reviews: reviews });
+    }
+});
 
 app.get("/register", (req, res) => {
     if (req.session.user) {

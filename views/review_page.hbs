@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="generic.css">
+    <link rel="stylesheet" href="reviews.css">
+   
+</head>
+<body>
+    {{!-- Dummy Navbar --}}
+    <div class="h-10" style="background-color: orange; height: 80px">
+
+    </div>
+    <div class="container ">
+        <div class="review-header-container">
+            <h1>Food Reviews</h1>
+            <p class="text-hint">What other users have to say</p>
+            <button class="btn btn-primary" type="button">Write your own review</button>
+        </div>
+
+        <div class="review-list-container">
+            <ul>
+                {{#each reviews}}
+                <li>
+                    <div class="review-item row">
+                        <div class="review-left-section col-3">
+                            <div class="image-container">
+                                {{!-- Update with User Image URL --}}
+                                <img class="img-avatar" src="https://2.img-dpreview.com/files/p/E~C1000x0S4000x4000T1200x1200~articles/3925134721/0266554465.jpeg" alt="User Image">
+                                <img class="upvote_avatar_icon" src="/images/upvote_avatar.png" alt="upvote_icon"/>
+                            </div>
+                             <p>Username</p>
+                        </div>
+
+                        <div class="review-right-section col-9">
+                            <div class="review-content-container">
+                                <div class="d-flex justify-content-between">
+                                    <h2>{{title}}</h2>
+                                    {{!-- Dropdown for Edit/Delete --}}
+                                    <div class="dropdown more-options">
+                                        <img 
+                                            src="/images/three-dots-vertical.svg" 
+                                            alt="More Options" 
+                                            class="btn dropdown-toggle"
+                                            data-bs-toggle="dropdown"/>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>{{body}}</p>
+
+                                {{!-- Upvote/Downvote --}}
+                                <div class="vote-container border rounded d-inline-block">
+                                    <div class="d-flex">
+                                        <div class="upvote-container btn">
+                                            <img 
+                                                src="/images/upvote.png" 
+                                                alt="Upvote" 
+                                                class="vote-icon upvote"/>
+                                            <span class="vote-count ms-1">122</span>
+                                            <div class="separator">
+                                            </div>
+                                        </div>
+                                        <div class="btn">
+                                            <img 
+                                                src="/images/downvote.png" 
+                                                alt="Downvote" 
+                                                class="vote-icon downvote"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
