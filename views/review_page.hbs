@@ -14,11 +14,37 @@
     <div class="h-10" style="background-color: orange; height: 80px">
 
     </div>
-    <div class="container ">
+    <div class="container">
         <div class="review-header-container">
             <h1>Food Reviews</h1>
             <p class="text-hint">What other users have to say</p>
-            <button class="btn btn-primary" type="button">Write your own review</button>
+        </div>
+
+        <div class="create-review-container">
+            <p>Write your own review:</p>
+            <form>
+                <div class="form-row">
+                    <input type="text" class="form-control" id="title" placeholder="Title" required>
+                </div>
+                <div class="form-row mt-2">
+                    <textarea class="form-control" id="body" placeholder="Message" required></textarea>
+                </div>
+                <div class="mt-2">
+                    <p>Did you like this?</p>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn">
+                            <input type="radio" name="options" id="like-review" autocomplete="off" checked> Yes
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="options" id="dislike-review" autocomplete="off"> No
+                        </label>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary d-flex align-self-end" type="button">Submit</button>
+                </div>
+
+            </form>
         </div>
 
         <div class="review-list-container">
@@ -32,13 +58,13 @@
                                 <img class="img-avatar" src="https://2.img-dpreview.com/files/p/E~C1000x0S4000x4000T1200x1200~articles/3925134721/0266554465.jpeg" alt="User Image">
                                 <img class="upvote_avatar_icon" src="/images/upvote_avatar.png" alt="upvote_icon"/>
                             </div>
-                             <p>Username</p>
+                             <p>{{reviewUser}}</p>
                         </div>
 
                         <div class="review-right-section col-9">
                             <div class="review-content-container">
                                 <div class="d-flex justify-content-between">
-                                    <h2>{{title}}</h2>
+                                    <h2>{{reviewSubject}}</h2>
                                     {{!-- Dropdown for Edit/Delete --}}
                                     <div class="dropdown more-options">
                                         <img 
@@ -47,13 +73,12 @@
                                             class="btn dropdown-toggle"
                                             data-bs-toggle="dropdown"/>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item" href="#">Delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <p>{{body}}</p>
+                                <p>{{reviewBody}}</p>
 
                                 {{!-- Upvote/Downvote --}}
                                 <div class="vote-container border rounded d-inline-block">
@@ -63,7 +88,7 @@
                                                 src="/images/upvote.png" 
                                                 alt="Upvote" 
                                                 class="vote-icon upvote"/>
-                                            <span class="vote-count ms-1">122</span>
+                                            <span class="vote-count ms-1">{{reviewUpvotes}}</span>
                                             <div class="separator">
                                             </div>
                                         </div>

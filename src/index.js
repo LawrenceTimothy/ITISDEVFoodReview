@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 })
 
 // TODO: Update to include food ID in URL
-app.get("/reviews", (req, res) => {
+app.get("/reviews", async (req, res) => {
     const reviews = [
         { title: 'Review 1', date: '2022-01-01', body: 'This is the first review.' },
         { title: 'Review 2', date: '2022-01-02', body: 'This is the second review.' },
@@ -46,14 +46,18 @@ app.get("/reviews", (req, res) => {
         // Add more reviews as needed
     ];
     if (req.session.user) {
-        const data = Review.find();
-
+        const data = Review.find({});
+        console.log("Data");
+        console.log(data)
         // TODO: Temp data, change to result from mongoose model later.
-        res.render("review_page", { reviews: reviews });
+        res.render("review_page", { reviews: data });
     }
     else {
         // TODO: Change to login
-        res.render("review_page", { reviews: reviews });
+        const data = await Review.find({});
+        console.log("Data");
+        console.log(data);
+        res.render("review_page", { reviews: data });
     }
 });
 

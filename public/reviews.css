@@ -7,6 +7,14 @@
     margin-top: 2rem;
 }
 
+.form-control {
+    background-color: #F5F5F5;
+}
+
+.create-review-container {
+    margin: 2rem 5rem;
+}
+
 .image-container {
     display: flex;
     position: relative;

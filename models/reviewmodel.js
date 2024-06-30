@@ -6,11 +6,10 @@ var ReviewSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    /*reviewUser: { // To store user's name. NOTE: COMMENTED THIS BECAUSE THERE
-    'S STILL NO WAY TO TRACK THE USER
+    reviewUser: {
         type: String,
         required: true
-    },*/
+    },
     /*userAvatar: { // to be used for the avatar of the user.
         type: String,
         required: false
