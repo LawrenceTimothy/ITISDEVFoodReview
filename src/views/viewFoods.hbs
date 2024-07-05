@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen City Food Community</title>
+    <link rel="stylesheet" href="foods.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Kitchen City Logo" id="logo">
+        <h1>Kitchen City Food Community</h1>
+    </header>
+    <main>
+        {{#each foods}}
+        <div class="food-post">
+            <div class="post-header">
+                <h2>{{name}}</h2>
+                <div class="rating">Rating: {{overallRating}}</div>
+            </div>
+            <img src="{{pictureUrl}}" alt="{{name}} Image" class="food-image">
+            <p class="description">{{description}}</p>
+            <ul class="details">
+                <li><strong>Ingredients:</strong>  
+                  {{#each ingredients}}
+                    {{this}}{{#unless @last}}, {{/unless}}
+                  {{/each}}
+                </li>
+                <li><strong>Calorie Count:</strong> {{calorieCount}} calories</li>
+                <li><strong>Best Paired With:</strong> {{bestPartneredWith}}</li>
+            </ul>
+        </div>
+        {{/each}}
+    </main>
+</body>
+</html>
