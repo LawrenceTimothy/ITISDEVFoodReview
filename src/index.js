@@ -6,8 +6,13 @@ const session = require("express-session")
 const collection = require("./mongodb")
 const exphbs = require("express-handlebars")
 const fs = require('fs');
-const Review = require('../models/reviewmodel.js') // RENZO: references review model
+const reviewData = require("../data/reviewData.js");
+const Review = require('../models/reviewModel.js') // RENZO: references review model
 const { v4: uuidv4 } = require('uuid'); // RENZO: FOR REVIEW ID GENERATION
+
+const foodRoutes = require("../routes/foodRoutes.js");
+const userRoutes = require("../routes/userRoutes.js");
+const reviewRoutes = require("../routes/reviewRoutes.js");
 
 const templatePath = path.join(__dirname, "../views")
 
@@ -17,7 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
+// Middlewares
 app.use(express.json())
 app.set("view engine", "hbs")
 app.set("views", templatePath)
@@ -29,6 +34,11 @@ app.use(session({
     saveUninitialized: false
 }))
 
+// Routes
+app.use("/foods", foodRoutes);
+app.use("/users", userRoutes)
+app.use("/reviews", reviewRoutes);
+
 app.get("/", (req, res) => {
     if (req.session.user) {
         res.render("home", { user: req.session.user.username })
@@ -37,30 +47,7 @@ app.get("/", (req, res) => {
     }
 })
 
-// TODO: Update to include food ID in URL
-app.get("/reviews", async (req, res) => {
-    const reviews = [
-        { title: 'Review 1', date: '2022-01-01', body: 'This is the first review.' },
-        { title: 'Review 2', date: '2022-01-02', body: 'This is the second review.' },
-        { title: 'Review 3', date: '2022-01-02', body: 'asdaj hjkhas jkhaskjdh jkashdjkash dkjsahdjks ahdjkashdjk ashjkahdkjas hkjahdkjash kjshadjk ahsjkdashjdkh\nasldalkdklsajdlkajdlasjlkdajldkjaskldjalkdj asdkl asjd kasd askld jsakld askl jaskld askldj aslkdj laskjd asklklasjd lkasjd klasdj sakld jasldj asldk ajsd laksdja lsdj' },
-        // Add more reviews as needed
-    ];
-    if (req.session.user) {
-        const data = Review.find({});
-        console.log("Data");
-        console.log(data)
-        // TODO: Temp data, change to result from mongoose model later.
-        res.render("review_page", { reviews: data });
-    }
-    else {
-        // TODO: Change to login
-        const data = await Review.find({});
-        console.log("Data");
-        console.log(data);
-        res.render("review_page", { reviews: data });
-    }
-});
-
+// Other routes
 app.get("/register", (req, res) => {
     if (req.session.user) {
         res.redirect("/");

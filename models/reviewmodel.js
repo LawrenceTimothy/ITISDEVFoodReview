@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var userCollectionName = "jtptestusers";
 
 var ReviewSchema = new mongoose.Schema({
     reviewId : {
@@ -7,13 +8,10 @@ var ReviewSchema = new mongoose.Schema({
         unique: true
     },
     reviewUser: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: userCollectionName,    // TODO: To update with actual user collection.
         required: true
     },
-    /*userAvatar: { // to be used for the avatar of the user.
-        type: String,
-        required: false
-    },*/
     reviewSubject: {
         type: String,
         required: true
@@ -24,28 +22,34 @@ var ReviewSchema = new mongoose.Schema({
     },
     reviewDate: {
         type: Object,
-        required: true
+        default: new Date()
     },
-    foodName: {
-        type: String,
-        required: false
+    foodId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Food",
+        required: true
     },
     reviewUpvotes: {
         type: Number,
-        required: false
+        required: false,
+        default: 0
     },
     reviewDownvotes: {
         type: Number,
-        required: false
+        required: false,
+        default: 0,
     },
-    /*reviewUpvoteUsers: [{ // Tracks if user has already upvoted
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users', // references user collection
-    }],
-    reviewDownvoteUsers: [{ // Tracks if user has already downvoted
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users', // references user collection
-    }],*/
+    reviewUpvoteUsers: { // Tracks if user has already upvoted
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: userCollectionName, // references user collection
+        default: []
+    },
+    reviewDownvoteUsers: { // Tracks if user has already downvoted
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: userCollectionName, // references user collection
+        default: []
+    },
 });
 
-module.exports = mongoose.model ('Review', ReviewSchema);
+const Review = mongoose.model('Review', ReviewSchema);
+module.exports = Review;
