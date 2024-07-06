@@ -133,15 +133,17 @@
                                 <p class="review_body">{{reviewBody}}</p>
 
                                 {{!-- Upvote/Downvote --}}
-                                <div class="vote-container border rounded d-inline-block">
-                                    <div class="d-flex">
-                                        <div onclick="upvoteReview('{{reviewId}}')" class="upvote-container btn">
+                                <div class="vote-main-container d-inline-block">
+                                    <div id="vote_container_{{reviewId}}" 
+                                        class="vote-container d-flex align-items-center border rounded">
+                                        <div onclick="upvoteReview('{{reviewId}}')" id="upvote_container_{{reviewId}}"
+                                            class="upvote-container btn">
                                             <img src="/images/upvote.png" alt="Upvote" class="vote-icon upvote" />
-                                            <span class="vote-count ms-1">{{reviewUpvotes}}</span>
-                                            <div class="separator">
-                                            </div>
                                         </div>
-                                        <div class="btn">
+                                        <span class="vote-count mx-2">{{reviewUpvotes}}</span>
+                                        <div onclick="downvoteReview(`{{reviewId}}`)" 
+                                            id="downvote_container_{{reviewId}}" 
+                                            class="btn downvote-container">
                                             <img onclick="upvoteReview({{reviewId}})" src="/images/downvote.png"
                                                 alt="Downvote" class="vote-icon downvote" />
                                         </div>

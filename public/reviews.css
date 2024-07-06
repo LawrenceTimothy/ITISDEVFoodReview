@@ -66,8 +66,12 @@ ul {
     right: 1em;
 }
 
-.vote-container {
+.vote-main-container {
     margin-top: 5rem;
+}
+
+.vote-container {
+    background-color: lightgray;
 }
 
 .vote-icon {
@@ -79,17 +83,31 @@ ul {
     background-color: orange;
     display: inline;
     width: auto;
+    border: none;
 }
 
-.upvote {
-    margin-right: 0.5rem;
+.dropdown-menu li a:active{
+    background-color: darkgray !important;
 }
 
-.upvote-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-primary:hover,.btn-primary:active {
+    background-color: rgba(255, 183, 50, 0.675) !important;
+}
+
+.upvoted {
+    background-color: lightgreen;
+}
+
+.upvoted-upvote-container:hover {
+    background-color: rgb(112, 212, 112);
+}
+
+.downvoted {
+    background-color: lightcoral;
+}
+
+.downvoted-downvote-container:hover {
+    background-color: pink;
 }
 
 .separator {
@@ -99,9 +117,4 @@ ul {
     height: 80%;
     width: 1px;
     background-color: #ccc;
-}
-
-.downvote {
-    margin-left: 0rem;
-    padding-left: 0px;
 }

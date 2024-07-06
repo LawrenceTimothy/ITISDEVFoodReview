@@ -1,10 +1,5 @@
 let currentReviewId = null;
 
-function upvoteReview(reviewId) {
-  // Call the API to upvote the review
-  alert("Test")
-}
-
 // Method to submit a review.
 async function submitReview(e)
 {
@@ -109,3 +104,34 @@ async function openEditReview(reviewId)
 $("#closeModalBtn").on("click", () => {
   $("#editReviewModal").modal("hide");
 });
+
+// ============== UPVOTE/DOWNVOTE FUNCTIONALITY ==============
+
+// Method for upvoting a given review.
+function upvoteReview(reviewId) 
+{
+  // Enable class name for containers
+  $(`#vote_container_${reviewId}`).removeClass("downvoted");
+  $(`#upvote_container_${reviewId}`).removeClass("downvoted-downvote-container");
+  $(`#downvote_container_${reviewId}`).removeClass("downvoted-downvote-container");
+
+  $(`#vote_container_${reviewId}`).addClass("upvoted");
+  $(`#upvote_container_${reviewId}`).addClass("upvoted-upvote-container");
+  $(`#downvote_container_${reviewId}`).addClass("upvoted-upvote-container");
+
+  // TODO: PATCH REQUESTS HERE
+}
+
+// Method for downvoting a given review.
+function downvoteReview(reviewId)
+{
+  $(`#vote_container_${reviewId}`).removeClass("upvoted");
+  $(`#upvote_container_${reviewId}`).removeClass("upvoted-upvote-container");
+  $(`#downvote_container_${reviewId}`).removeClass("upvoted-upvote-container");
+
+  $(`#vote_container_${reviewId}`).addClass("downvoted");
+  $(`#upvote_container_${reviewId}`).addClass("downvoted-downvote-container");
+  $(`#downvote_container_${reviewId}`).addClass("downvoted-downvote-container");
+
+  // TODO: PATCH REQUESTS HERE
+}
