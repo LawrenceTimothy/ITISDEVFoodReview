@@ -108,27 +108,27 @@ app.get('/reviewtest', (req, res) => {
   res.render('reviewtest', { foodId, foodName });
 });
 
-// Review posting functionalityyt
-app.post('/submitReview', (req, res) => {
+// Review posting functionality
+app.post('/submitReview', async (req, res) => {
+    var foodId = req.body.foodId;
     try {
         let reviewDate = new Date();
         const reviewData = new Review ({
             reviewId : uuidv4(), // Unique identifier for the review
-            //reviewUser: req.user.reviewUser, // User's name. 
+            reviewUser: req.session.user._id, // User's name. 
             reviewSubject: req.body.reviewSubject, // Title of the review.
-            reviewDate: reviewDate, // Date of the review
             reviewBody: req.body.reviewBody, // Body of the review.
-            foodName: req.body.foodName,// Food that was reviewed.
-            reviewUpvotes: req.body.reviewUpvotes, // Number of upvotes.
-            reviewDownvotes: req.body.reviewDownvotes, // Number of downvotes.
-    });
-      reviewData.save(); 
-      console.log(reviewData); // logs into the console for testing
-      res.redirect('/foodtest'); // redirect to foodtest
+            isUpvote: req.body.isUpvote, // Upvote status of the review.
+            reviewDate: reviewDate, // Date of the review
+            food: req.body.foodId,// Food that was reviewed.
+        });
+        await reviewData.save(); 
+        // console.log(reviewData); // logs into the console for testing
+        res.status(200).send(reviewData); // sends the review data to the client
     } catch (e) {
         console.log(e);
-        //console.log(reviewData);
-    res.redirect('/foodtest'); // redirect to foodtest
+        console.log(reviewData);
+        res.status(400).send(e);
     }
   });
 

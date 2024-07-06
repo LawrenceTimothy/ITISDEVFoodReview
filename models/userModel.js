@@ -12,6 +12,6 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-const User = mongoose.model('jtptestusers', UserSchema);
+const User = mongoose.model('logincollections', UserSchema);
 
 module.exports = User;

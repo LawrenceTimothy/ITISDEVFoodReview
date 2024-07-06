@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var userCollectionName = "jtptestusers";
+var userCollectionName = "logincollections";
 
 var ReviewSchema = new mongoose.Schema({
     reviewId : {
@@ -24,9 +24,13 @@ var ReviewSchema = new mongoose.Schema({
         type: Object,
         default: new Date()
     },
-    foodId: {
+    food: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Food",
+        required: true
+    },
+    isUpvote: {
+        type: Boolean,
         required: true
     },
     reviewUpvotes: {
