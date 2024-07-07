@@ -5,8 +5,14 @@ const hbs = require("hbs")
 const session = require("express-session")
 const collection = require("./mongodb")
 const exphbs = require("express-handlebars")
-const Review = require('../models/reviewmodel.js') // RENZO: references review model
+const fs = require('fs');
+const reviewData = require("../data/reviewData.js");
+const Review = require('../models/reviewModel.js') // RENZO: references review model
 const { v4: uuidv4 } = require('uuid'); // RENZO: FOR REVIEW ID GENERATION
+
+const foodRoutes = require("../routes/foodRoutes.js");
+const userRoutes = require("../routes/userRoutes.js");
+const reviewRoutes = require("../routes/reviewRoutes.js");
 
 const templatePath = path.join(__dirname, "../views")
 
@@ -16,7 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
+// Middlewares
 app.use(express.json())
 app.set("view engine", "hbs")
 app.set("views", templatePath)
@@ -28,6 +34,11 @@ app.use(session({
     saveUninitialized: false
 }))
 
+// Routes
+app.use("/foods", foodRoutes);
+app.use("/users", userRoutes)
+app.use("/reviews", reviewRoutes);
+
 app.get("/", (req, res) => {
     if (req.session.user) {
         res.render("home", { user: req.session.user.username })
@@ -36,6 +47,7 @@ app.get("/", (req, res) => {
     }
 })
 
+// Other routes
 app.get("/register", (req, res) => {
     if (req.session.user) {
         res.redirect("/");
@@ -96,29 +108,27 @@ app.get('/reviewtest', (req, res) => {
   res.render('reviewtest', { foodId, foodName });
 });
 
-// Review posting functionalityyt
-app.post('/submitReview', (req, res) => {
+// Review posting functionality
+app.post('/submitReview', async (req, res) => {
+    var foodId = req.body.foodId;
     try {
         let reviewDate = new Date();
         const reviewData = new Review ({
             reviewId : uuidv4(), // Unique identifier for the review
-            reviewUser: 'placeholderuser',//req.user.reviewUser, // User's name. 
-            //userAvatar: req.user.pfp, // User's avatar
+            reviewUser: req.session.user._id, // User's name. 
             reviewSubject: req.body.reviewSubject, // Title of the review.
-            reviewDate: reviewDate, // Date of the review
             reviewBody: req.body.reviewBody, // Body of the review.
-            foodName: req.body.foodName,// Food that was reviewed.
-            reviewVerdict: req.body.reviewVerdict === 'true', // Convert to boolean
-            reviewUpvotes: 0, // Number of review's upvotes.
-            reviewDownvotes: 0, // Number of review's downvotes.
-    });
-      reviewData.save(); 
-      console.log(reviewData); // logs into the console for testing
-      res.redirect('/foodtest'); // redirect to foodtest
+            isUpvote: req.body.isUpvote, // Upvote status of the review.
+            reviewDate: reviewDate, // Date of the review
+            food: req.body.foodId,// Food that was reviewed.
+        });
+        await reviewData.save(); 
+        // console.log(reviewData); // logs into the console for testing
+        res.status(200).send(reviewData); // sends the review data to the client
     } catch (e) {
         console.log(e);
-        //console.log(reviewData);
-    res.redirect('/foodtest'); // redirect to foodtest
+        console.log(reviewData);
+        res.status(400).send(e);
     }
   });
 

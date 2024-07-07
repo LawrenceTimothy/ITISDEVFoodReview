@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+p,h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+.img-avatar {
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+}
+
+.text-hint {
+    font-size: 16px;
+    color: #999;
+}

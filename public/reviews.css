@@ -1,0 +1,120 @@
+.review-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.form-control {
+    background-color: #F5F5F5;
+}
+
+.create-review-container {
+    margin: 2rem 5rem;
+}
+
+.image-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.upvote_avatar_icon {
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    height: 4rem;
+    width: 4rem;
+    color:white;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.review-list-container {
+    margin: 2rem 5rem;
+}
+
+/* Review Item CSS */
+.review-item {
+    border-top: 0.5px solid #ccc;
+}
+
+.review-left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0rem 1rem 0;
+}
+
+.review-right-section {
+    position: relative;
+    border-left: 1px solid #ccc;
+    padding: 1.5rem 2rem;
+}
+
+.more-options {
+    position: absolute;
+    top: 1.5rem;
+    right: 1em;
+}
+
+.vote-main-container {
+    margin-top: 5rem;
+}
+
+.vote-container {
+    background-color: lightgray;
+}
+
+.vote-icon {
+    height: 1rem;
+    width: 1rem;
+}
+
+.btn-primary {
+    background-color: orange;
+    display: inline;
+    width: auto;
+    border: none;
+}
+
+.dropdown-menu li a:active{
+    background-color: darkgray !important;
+}
+
+.btn-primary:hover,.btn-primary:active {
+    background-color: rgba(255, 183, 50, 0.675) !important;
+}
+
+.upvoted {
+    background-color: lightgreen;
+}
+
+.upvoted-upvote-container:hover {
+    background-color: rgb(112, 212, 112);
+}
+
+.downvoted {
+    background-color: lightcoral;
+}
+
+.downvoted-downvote-container:hover {
+    background-color: pink;
+}
+
+.separator {
+    display: inline;
+    position: absolute;
+    right: 0;
+    height: 80%;
+    width: 1px;
+    background-color: #ccc;
+}
