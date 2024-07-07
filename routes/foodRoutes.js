@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Review = require('../models/reviewModel');
+const Review = require('../models/reviewmodel');
 const Food = require('../models/foodModel'); // Adjust path as per your project structure
 const foodTestData = require("../data/foodData.js");
 const reviewTestData = require("../data/reviewData.js");

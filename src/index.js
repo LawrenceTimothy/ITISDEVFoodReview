@@ -7,7 +7,7 @@ const collection = require("./mongodb")
 const exphbs = require("express-handlebars")
 const fs = require('fs');
 const reviewData = require("../data/reviewData.js");
-const Review = require('../models/reviewModel.js') // RENZO: references review model
+const Review = require('../models/reviewmodel.js') // RENZO: references review model
 const { v4: uuidv4 } = require('uuid'); // RENZO: FOR REVIEW ID GENERATION
 
 const foodRoutes = require("../routes/foodRoutes.js");

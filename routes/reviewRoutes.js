@@ -4,7 +4,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Review = require('../models/reviewModel');
+const Review = require('../models/reviewmodel');
 const reviewTestData = require("../data/reviewData.js");
 
 router.post("/reset", async (req, res) => {
