@@ -1,58 +1,63 @@
-<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/foods.css">
+    <script src="/public/javascript/button.js" defer></script>
     <title>Kitchen City Food Community</title>
-    <link rel="stylesheet" href="foods.css">
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Kitchen City Logo" id="logo">
-        <h1>Kitchen City Food Community</h1>
-    </header>
-    <main>
-        {{#each foods}}
-        <div class="food-post">
-            <div class="post-header">
-                <h2>{{name}}</h2>
-                <div class="rating">Rating: {{overallRating}}</div>
+    <div class="Header">
+        <img class="HeaderBackground" src="DLSU-night.jpg" alt="Header Background" />
+        <div class="KitchenCityFoodCommunity">
+            <img class="Logo1" src="logo.png" alt="Kitchen City Logo" />
+            <span class="KitchenCity">Kitchen City</span>
+            <span> </span>
+            <span class="FoodCommunity">Food Community</span>
+        </div>
+
+        <div class="navis">
+            <div class="search">
+                <input type="text" placeholder="Search">
             </div>
-            <img src="{{pictureUrl}}" alt="{{name}} Image" class="food-image">
-            <p class="description">{{description}}</p>
-            <ul class="details">
-                <li><strong>Ingredients:</strong>  
-                  {{#each ingredients}}
-                    {{this}}{{#unless @last}}, {{/unless}}
-                  {{/each}}
-                </li>
-                <li><strong>Calorie Count:</strong> {{calorieCount}} calories</li>
-                <li><strong>Best Paired With:</strong> {{bestPartneredWith}}</li>
-            </ul>
+            <button class="HomeButton">
+                <div class="Home">HOME</div>
+            </button>
+            <button class="ViewFoodsButton">
+                <div class="ViewFoods">VIEW FOODS</div>
+            </button>
+            <button class="MealsOfTheWeekButton">
+                <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+            </button>
+            <button class="ProfileButton">
+                <div class="Profile">PROFILE</div>
+            </button>
+        </div>
+    </div>
+
+    <div class="foodCards">
+        {{#each foodItems}}
+        <div class="food-item">
+            <img class="pictureUrl" src="{{pictureUrl}}" alt="{{foodName}}" />
+            <div class="foodName">{{name}}</div>
+            <div class="OverallRating">Overall rating: {{overallRating}}</div>
+            <div class="description">{{description}}</div>
+            <div class="ingredients">
+                <span>INGREDIENTS:<br/></span>
+                <span>{{#each ingredients}}<br/> {{this}}{{#unless @last}}, {{/unless}}
+                {{/each}}</span>
+            </div>
+            <div class="CalorieCount">
+                <span>Calorie Count:</span>
+                <span> {{calorieCount}} Calories</span>
+            </div>
+            <div class="BestPartneredWith">
+                <span>Best Partnered With:</span>
+                <span> {{bestPartneredWith}}</span>
+            </div>
         </div>
         {{/each}}
-    </main>
+    </div>
 </body>
 </html>
-=======
-<!-- src/views/viewFoods.hbs -->
-
-<h1>Featured Foods</h1>
-
-{{#each foods}}
-<div class="food-item">
-  <img src="{{ pictureUrl }}" alt="{{ name }}">
-  <h2>{{ name }}</h2>
-  <p>Overall Rating: {{ overallRating }}</p>
-  <p>Description: {{ description }}</p>
-  <p>Ingredients: 
-    {{#each ingredients}}
-      {{this}}{{#unless @last}}, {{/unless}}
-    {{/each}}
-  </p>
-  <p>Calorie Count: {{ calorieCount }}</p>
-  <p>Best Partnered With: {{ bestPartneredWith }}</p>
-</div>
-{{/each}}
->>>>>>> Stashed changes
