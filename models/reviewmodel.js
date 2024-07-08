@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var userCollectionName = "logincollections";
 
 var ReviewSchema = new mongoose.Schema({
     reviewId : {
@@ -6,14 +7,11 @@ var ReviewSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    reviewUser: { // To store user's name. NOTE: COMMENTED THIS BECAUSE THERE'S STILL NO WAY TO TRACK THE USER
-        type: String,
+    reviewUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: userCollectionName,    // TODO: To update with actual user collection.
         required: true
     },
-    /*userAvatar: { // to be used for the avatar of the user.
-        type: String,
-        required: false
-    },*/
     reviewSubject: {
         type: String,
         required: true
@@ -24,11 +22,16 @@ var ReviewSchema = new mongoose.Schema({
     },
     reviewDate: {
         type: Object,
+        default: new Date()
+    },
+    food: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Food",
         required: true
     },
-    foodName: {
-        type: String,
-        required: false
+    isUpvote: {
+        type: Boolean,
+        required: true
     },
     reviewVerdict:{
         type: Boolean,
@@ -36,20 +39,25 @@ var ReviewSchema = new mongoose.Schema({
     },
     reviewUpvotes: {
         type: Number,
-        required: false
+        required: false,
+        default: 0
     },
     reviewDownvotes: {
         type: Number,
-        required: false
+        required: false,
+        default: 0,
     },
-    /*reviewUpvoteUsers: [{ // Tracks if user has already upvoted
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users', // references user collection
-    }],
-    reviewDownvoteUsers: [{ // Tracks if user has already downvoted
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users', // references user collection
-    }],*/
+    reviewUpvoteUsers: { // Tracks if user has already upvoted
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: userCollectionName, // references user collection
+        default: []
+    },
+    reviewDownvoteUsers: { // Tracks if user has already downvoted
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: userCollectionName, // references user collection
+        default: []
+    },
 });
 
-module.exports = mongoose.model ('Review', ReviewSchema);
+const Review = mongoose.model('Review', ReviewSchema);
+module.exports = Review;
