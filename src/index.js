@@ -143,3 +143,8 @@ app.get("/logout", (req, res) => {
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 })
+
+// RENZO: hbs helper for showing upvote/downvote result.
+hbs.registerHelper('subtract', function(a, b) { 
+    return a - b;
+});

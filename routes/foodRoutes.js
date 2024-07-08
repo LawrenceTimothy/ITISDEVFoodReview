@@ -102,4 +102,72 @@ router.patch("/:id/reviews", async (req, res) => {
     }
 });
 
+// RENZO ADDITION BELOW
+router.patch("/:id/reviews/:reviewId/vote", async (req, res) => { // HANDLES THE ENTIRE VOTE ACTION PROCESS
+    try {
+        const { id, reviewId } = req.params;
+        const { voteType } = req.body; // Upvote or Downvote
+        const userId = req.session.user._id;
+
+        const review = await Review.findOne({ reviewId: reviewId }); // Gets the chosen review.
+
+        if (!review) {
+            return res.status(404).send("Review not found");
+        }
+
+        const alreadyUpvoted = review.reviewUpvoteUsers.includes(userId); // Gets list of review's already upvoted users.
+        const alreadyDownvoted = review.reviewDownvoteUsers.includes(userId); // Gets list of review's already downvoted users.
+        
+        let previousVoteStatus = alreadyUpvoted ? 'upvote' : (alreadyDownvoted ? 'downvote' : null); // NOTE: SUPPOSED TO BE FOR VOTE REMOVAL. DOESN'T WORK, MIGHT FIX BUT IT IS A NON-ISSUE.
+        let currentVoteStatus = voteType;
+
+        if (voteType === 'upvote') { // If the user has upvoted the review...
+            if (alreadyUpvoted) { //... and has already upvoted the review previously...
+                
+                review.reviewUpvotes--; // ... remove the upvote...
+                review.reviewUpvoteUsers = review.reviewUpvoteUsers.filter(id => id.toString() !== userId.toString());
+                currentVoteStatus = null; // ... and reset the vote status.
+            } else { // If the user hasn't upvoted yet...
+                
+                review.reviewUpvotes++; // ... add the upvote...
+                review.reviewUpvoteUsers.push(userId); // ... adds the user to the list of upvoting users.
+                if (alreadyDownvoted) {
+                    // Remove downvote if exists
+                    review.reviewDownvotes--;
+                    review.reviewDownvoteUsers = review.reviewDownvoteUsers.filter(id => id.toString() !== userId.toString());
+                }
+            }
+        } else if (voteType === 'downvote') { // If the user has downvoted the review...
+            if (alreadyDownvoted) { //... and has already downvoted the review previously...
+
+                review.reviewDownvotes--; // ... remove the downvote...
+                review.reviewDownvoteUsers = review.reviewDownvoteUsers.filter(id => id.toString() !== userId.toString());
+                currentVoteStatus = null; // ... and reset the vote status.
+            } else { // If the user hasn't downvoted yet...
+
+                review.reviewDownvotes++; // ... add the downvote...
+                review.reviewDownvoteUsers.push(userId); // ... adds the user to the list of downvoting users.
+                if (alreadyUpvoted) {
+                    // Remove upvote if exists
+                    review.reviewUpvotes--;
+                    review.reviewUpvoteUsers = review.reviewUpvoteUsers.filter(id => id.toString() !== userId.toString());
+                }
+            }
+        }
+
+        await review.save();
+        res.status(200).json({ 
+            upvotes: review.reviewUpvotes, 
+            downvotes: review.reviewDownvotes,
+            userVoteStatus: currentVoteStatus,
+            previousVoteStatus: previousVoteStatus
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server error");
+    }
+});
+
+// RENZO ADDITION END.
+
 module.exports = router;

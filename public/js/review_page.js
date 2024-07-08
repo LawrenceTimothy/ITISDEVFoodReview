@@ -105,33 +105,76 @@ $("#closeModalBtn").on("click", () => {
   $("#editReviewModal").modal("hide");
 });
 
-// ============== UPVOTE/DOWNVOTE FUNCTIONALITY ==============
+// ============== UPVOTE/DOWNVOTE FUNCTIONALITY ============== 7/8/2024: RENZO IMPLEMENTATION BELOW
 
-// Method for upvoting a given review.
-function upvoteReview(reviewId) 
-{
-  // Enable class name for containers
-  $(`#vote_container_${reviewId}`).removeClass("downvoted");
-  $(`#upvote_container_${reviewId}`).removeClass("downvoted-downvote-container");
-  $(`#downvote_container_${reviewId}`).removeClass("downvoted-downvote-container");
+async function vote(reviewId, voteType) { // Master function for voting.
+  const foodId = document.getElementById("foodId").dataset.id; // Gets the current ID of the to-be-reviewed food.
+  try {
+      const response = await fetch(`/foods/${foodId}/reviews/${reviewId}/vote`, { 
+          method: 'PATCH',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ voteType }),
+      });
 
-  $(`#vote_container_${reviewId}`).addClass("upvoted");
-  $(`#upvote_container_${reviewId}`).addClass("upvoted-upvote-container");
-  $(`#downvote_container_${reviewId}`).addClass("upvoted-upvote-container");
-
-  // TODO: PATCH REQUESTS HERE
+      if (response.ok) {
+          const data = await response.json();
+          updateVoteUI(reviewId, data.upvotes, data.downvotes, data.userVoteStatus);
+          showVotePrompt(data.userVoteStatus, data.previousVoteStatus);
+      } else {
+          throw new Error('Vote failed');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to vote. Please try again.');
+  }
 }
 
-// Method for downvoting a given review.
-function downvoteReview(reviewId)
-{
-  $(`#vote_container_${reviewId}`).removeClass("upvoted");
-  $(`#upvote_container_${reviewId}`).removeClass("upvoted-upvote-container");
-  $(`#downvote_container_${reviewId}`).removeClass("upvoted-upvote-container");
+function updateVoteUI(reviewId, upvotes, downvotes, userVoteStatus) { // Function for the front-end update when vote actions occur.
+  const voteContainer = document.getElementById(`vote_container_${reviewId}`); // Gets the specific voteContainer (AKA vote action input fields)
+  if (!voteContainer) {
+      console.error(`Vote container for review ${reviewId} not found`);
+      return;
+  }
+  const upvoteContainer = document.getElementById(`upvote_container_${reviewId}`); 
+  const downvoteContainer = document.getElementById(`downvote_container_${reviewId}`);
+  const voteCount = voteContainer.querySelector('.vote-count'); 
 
-  $(`#vote_container_${reviewId}`).addClass("downvoted");
-  $(`#upvote_container_${reviewId}`).addClass("downvoted-downvote-container");
-  $(`#downvote_container_${reviewId}`).addClass("downvoted-downvote-container");
+  voteContainer.classList.remove('upvoted', 'downvoted'); // Reset all statuses
+  upvoteContainer.classList.remove('upvoted-upvote-container', 'downvoted-downvote-container'); // Reset all statuses
+  downvoteContainer.classList.remove('upvoted-upvote-container', 'downvoted-downvote-container'); // Reset all statuses
 
-  // TODO: PATCH REQUESTS HERE
+  if (userVoteStatus === 'upvote') { // Assigns upvote status to relevant containers if the user upvotes.
+      voteContainer.classList.add('upvoted');
+      upvoteContainer.classList.add('upvoted-upvote-container');
+      downvoteContainer.classList.add('upvoted-upvote-container');
+  } else if (userVoteStatus === 'downvote') {  // Assigns downvote status to relevant containers if the user upvotes.
+      voteContainer.classList.add('downvoted');
+      upvoteContainer.classList.add('downvoted-downvote-container');
+      downvoteContainer.classList.add('downvoted-downvote-container');
+  }
+
+  voteCount.textContent = upvotes - downvotes; // Net vote count
+}
+
+function showVotePrompt(currentVoteStatus, previousVoteStatus) { // Function for alert pop-up after a vote action.
+  let message = '';
+  if (currentVoteStatus === null) { // NOTE: VOTE REMOVAL ISN'T BEING DETECTED. MAY FIX IN THE FUTURE, BUT IT IS A NON-ISSUE AS OF NOW.
+      message = `You have removed your ${previousVoteStatus} from this review.`;
+  } else if (currentVoteStatus === 'upvote') {
+      message = previousVoteStatus === 'downvote' ? 'You changed your vote to an upvote.' : 'You have upvoted this review.';
+  } else if (currentVoteStatus === 'downvote') {
+      message = previousVoteStatus === 'upvote' ? 'You changed your vote to a downvote.' : 'You have downvoted this review.';
+  }
+  
+  alert(message);
+}
+
+function upvoteReview(reviewId) { // Helper function for vote(), upvote action.
+  vote(reviewId, 'upvote');
+}
+
+function downvoteReview(reviewId) { // Helper function for vote(), downvote action.
+  vote(reviewId, 'downvote');
 }

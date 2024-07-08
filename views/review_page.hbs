@@ -95,67 +95,63 @@
         </div>
 
         <div class="review-list-container">
-            <ul>
-                {{#each reviews}}
-                <li>
-                    <div id="review_{{reviewId}}" class="review-item row">
-                        <div class="review-left-section col-3">
-                            <div class="image-container">
-                                {{!-- Update with User Image URL --}}
-                                <img class="img-avatar"
-                                    src="https://2.img-dpreview.com/files/p/E~C1000x0S4000x4000T1200x1200~articles/3925134721/0266554465.jpeg"
-                                    alt="User Image">
-                                <img data-upvote="{{isUpvote}}" class="upvote_avatar_icon is_upvote" src="{{#if isUpvote}}
-                                            /images/upvote_avatar.png
-                                         {{else}}
-                                            /images/downvote_avatar.png
-                                         {{/if}}" alt="upvote_icon" />
+    <ul>
+        {{#each reviews}}
+        <li>
+            <div id="review_{{reviewId}}" class="review-item row">
+                <div class="review-left-section col-3">
+                    <div class="image-container">
+                        <img class="img-avatar"
+                            src="https://2.img-dpreview.com/files/p/E~C1000x0S4000x4000T1200x1200~articles/3925134721/0266554465.jpeg"
+                            alt="User Image">
+                        <img data-upvote="{{isUpvote}}" class="upvote_avatar_icon is_upvote" src="{{#if isUpvote}}
+                                    /images/upvote_avatar.png
+                                 {{else}}
+                                    /images/downvote_avatar.png
+                                 {{/if}}" alt="upvote_icon" />
+                    </div>
+                    <p>{{reviewUser.username}}</p>
+                </div>
+
+                <div class="review-right-section col-9">
+                    <div class="review-content-container">
+                        <div class="d-flex justify-content-between">
+                            <h2 class="review_subject">{{reviewSubject}}</h2>
+                            <div class="dropdown more-options">
+                                <img src="/images/three-dots-vertical.svg" alt="More Options"
+                                    class="btn dropdown-toggle" data-bs-toggle="dropdown" />
+                                <ul class="dropdown-menu">
+                                    <li onclick="openEditReview('{{reviewId}}')"><a class="dropdown-item"
+                                            href="#">Edit</a></li>
+                                    <li onclick="deleteReview('{{reviewId}}')"><a class="dropdown-item"
+                                            href="#">Delete</a></li>
+                                </ul>
                             </div>
-                            <p>{{reviewUser.username}}</p>
                         </div>
+                        <p class="review_body">{{reviewBody}}</p>
 
-                        <div class="review-right-section col-9">
-                            <div class="review-content-container">
-                                <div class="d-flex justify-content-between">
-                                    <h2 class="review_subject">{{reviewSubject}}</h2>
-                                    {{!-- Dropdown for Edit/Delete --}}
-                                    <div class="dropdown more-options">
-                                        <img src="/images/three-dots-vertical.svg" alt="More Options"
-                                            class="btn dropdown-toggle" data-bs-toggle="dropdown" />
-                                        <ul class="dropdown-menu">
-                                            <li onclick="openEditReview('{{reviewId}}')"><a class="dropdown-item"
-                                                    href="#">Edit</a></li>
-                                            <li onclick="deleteReview('{{reviewId}}')"><a class="dropdown-item"
-                                                    href="#">Delete</a></li>
-                                        </ul>
-                                    </div>
+                        <div class="vote-main-container d-inline-block">
+                            <div id="vote_container_{{reviewId}}" 
+                                class="vote-container d-flex align-items-center border rounded">
+                                <div onclick="upvoteReview('{{reviewId}}')" id="upvote_container_{{reviewId}}"
+                                    class="upvote-container btn">
+                                    <img src="/images/upvote.png" alt="Upvote" class="vote-icon upvote" />
                                 </div>
-                                <p class="review_body">{{reviewBody}}</p>
-
-                                {{!-- Upvote/Downvote --}}
-                                <div class="vote-main-container d-inline-block">
-                                    <div id="vote_container_{{reviewId}}" 
-                                        class="vote-container d-flex align-items-center border rounded">
-                                        <div onclick="upvoteReview('{{reviewId}}')" id="upvote_container_{{reviewId}}"
-                                            class="upvote-container btn">
-                                            <img src="/images/upvote.png" alt="Upvote" class="vote-icon upvote" />
-                                        </div>
-                                        <span class="vote-count mx-2">{{reviewUpvotes}}</span>
-                                        <div onclick="downvoteReview(`{{reviewId}}`)" 
-                                            id="downvote_container_{{reviewId}}" 
-                                            class="btn downvote-container">
-                                            <img onclick="upvoteReview({{reviewId}})" src="/images/downvote.png"
-                                                alt="Downvote" class="vote-icon downvote" />
-                                        </div>
-                                    </div>
+                                <span class="vote-count mx-2">{{subtract reviewUpvotes reviewDownvotes}}</span>
+                                <div onclick="downvoteReview('{{reviewId}}')" 
+                                    id="downvote_container_{{reviewId}}" 
+                                    class="btn downvote-container">
+                                    <img src="/images/downvote.png" alt="Downvote" class="vote-icon downvote" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </li>
-                {{/each}}
-            </ul>
-        </div>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
     </div>
     <div class="data">
         <div id="foodId" data-id="{{food._id}}">
