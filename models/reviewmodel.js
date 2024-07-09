@@ -33,10 +33,6 @@ var ReviewSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    reviewVerdict:{
-        type: Boolean,
-        required: true
-    },
     reviewUpvotes: {
         type: Number,
         required: false,
