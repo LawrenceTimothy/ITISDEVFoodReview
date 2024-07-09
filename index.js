@@ -16,17 +16,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// Handlebars
-app.engine('hbs', engine({ extname: '.hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, '/src/views/') }));
+// Handlebars setup
+// Example using Handlebars (hbs) view engine
+app.engine('hbs', engine({ extname: '.hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, 'profile', 'src', 'views') }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, '/src/views')); // Adjust views directory path
+
+// Set the views directories for both modules
+// Adjust paths based on your project structure
+app.set('views', [
+    path.join(__dirname, 'profile', 'src', 'views'),
+    path.join(__dirname, 'viewFoods', 'src', 'views')
+]);
 
 // Authentication middleware for demo purposes
-app.use((req, res, next) => {
-  // For demonstration, set req.user to a static user
-  req.user = { username: 'testuser' }; // Replace with actual authentication logic
-  next();
-});
+//app.use((req, res, next) => {
+// For demonstration, set req.user to a static user
+// req.user = { username: 'testuser' }; // Replace with actual authentication logic
+// next();
+//});
 
 // Routes
 app.use('/profile', profileRoutes);
