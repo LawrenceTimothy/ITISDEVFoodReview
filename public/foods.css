@@ -279,3 +279,107 @@ button.active {
     font-weight: 400;
     word-wrap: break-word;
 }
+
+.ProfileContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ProfilePageButton {
+    width: 889.66px;
+    height: 335px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: rgba(8, 120, 48, 0.40);
+    border-radius: 70px;
+}
+
+.EditProfileButton,
+.LogoutButton {
+    width: 111.87px;
+    height: 39.70px;
+    position: absolute;
+}
+
+.EditProfileButton{
+    top: 218px;;
+    left:89px;
+}
+
+.LogoutButton {
+    top: 273px;
+    left: 737px;
+}
+
+.EditProfile,
+.Logout {
+    width: 57.06px;
+    height: 15px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 12px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.EditProfile {
+    left: 27.47px;
+    top: 5px;
+}
+
+.Logout {
+    left: 27.47px;
+    top: 13px;
+}
+
+.username {
+    width: 456.45px;
+    height: 48px;
+    left: 267.32px;
+    top: 69px;
+    position: absolute;
+}
+
+.UsernameLabel,
+.BioLabel {
+    color: black;
+    font-size: 19px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.UsernameValue,
+.BioValue {
+    color: black;
+    font-size: 19px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
+    word-wrap: break-word;
+}
+
+.userdescription {
+    width: 595.92px;
+    height: 136px;
+    left: 267.32px;
+    top: 105px;
+    position: absolute;
+    word-wrap: break-word;
+    overflow:hidden;
+}
+
+.ProfilePicture {
+    width: 183.85px;
+    height: 175px;
+    left: 57.06px;
+    top: 38px;
+    position: absolute;
+    border-radius: 26px;
+}
