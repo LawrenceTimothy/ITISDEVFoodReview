@@ -135,10 +135,17 @@ button.active {
     height: 73px;
 }
 
-.foodCard {
+
+
+.foodCards {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap as needed */
+    justify-content: center; /* Center the cards horizontally */
+    margin: 20px;
 }
-.Food-item {
+.food-item {
     width: 421px;
     height: 526px;
     left: 7px;
@@ -175,7 +182,7 @@ button.active {
     width: 279px;
     height: 14px;
     left: 39px;
-    top: 69px;
+    top: 75px;
     position: absolute;
     color: black;
     font-size: 14px;

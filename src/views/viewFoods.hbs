@@ -37,9 +37,9 @@
     </div>
 
     <div class="foodCards">
-        {{#each foodItems}}
+        {{#each foods}}
         <div class="food-item">
-            <img class="pictureUrl" src="{{pictureUrl}}" alt="{{foodName}}" />
+            <img class="pictureUrl" src={{pictureUrl}} alt={{name}} />
             <div class="foodName">{{name}}</div>
             <div class="OverallRating">Overall rating: {{overallRating}}</div>
             <div class="description">{{description}}</div>
