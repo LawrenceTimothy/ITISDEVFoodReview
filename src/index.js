@@ -123,14 +123,18 @@ app.post('/submitReview', async (req, res) => {
             food: req.body.foodId,// Food that was reviewed.
         });
         await reviewData.save(); 
-        // console.log(reviewData); // logs into the console for testing
-        res.status(200).send(reviewData); // sends the review data to the client
+        res.status(200).json({
+            message: "Your review has been successfully posted!",
+            review: reviewData
+        });
     } catch (e) {
         console.log(e);
-        console.log(reviewData);
-        res.status(400).send(e);
+        res.status(400).json({
+            message: "Failed to post review. Please try again.",
+            error: e.message
+        });
     }
-  });
+});
 
 
 // RENZO TEST END

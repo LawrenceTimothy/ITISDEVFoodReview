@@ -1,35 +1,42 @@
 let currentReviewId = null;
 
 // Method to submit a review.
-async function submitReview(e)
-{
+async function submitReview(e) {
   e.preventDefault();
   const foodId = document.getElementById("foodId").dataset.id;
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
   const isUpvote = document.getElementById("like-review").checked;
 
-  const response = await fetch(`/submitReview`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      reviewSubject: title,
-      reviewBody: body,
-      foodId,
-      isUpvote
-    })
-  });
+  try {
+      const response = await fetch(`/submitReview`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              reviewSubject: title,
+              reviewBody: body,
+              foodId,
+              isUpvote
+          })
+      });
 
-  if (response.status === 200)
-  {
-    location.reload();
+      if (response.status === 200) {
+          const data = await response.json();
+          showReviewSubmitPrompt(data.message);
+          location.reload();
+      } else {
+          throw new Error('Failed to add review');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      alert("Failed to add review. Please try again.");
   }
-  else 
-  {
-    alert("Failed to add review.")
-  }
+}
+
+function showReviewSubmitPrompt(message) {
+  alert("Your review has been successfully posted!");
 }
 
 // Method to edit a review.
