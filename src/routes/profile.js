@@ -1,8 +1,21 @@
-// src/routes/profile.js
-
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const User = require('../models/user'); // Adjust path as per your project structure
+const path = require('path');
+const fs = require('fs');
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'profile/src/uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage });
 
 // View profile (GET request)
 router.get('/:username', async (req, res) => {
@@ -11,7 +24,7 @@ router.get('/:username', async (req, res) => {
     if (!user) {
       return res.status(404).send('User not found');
     }
-    res.render('viewProfile', { user });
+    res.render('profile', { user }); // Assuming 'profile.hbs' is your view template
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
@@ -25,7 +38,7 @@ router.get('/edit/:username', async (req, res) => {
     if (!user) {
       return res.status(404).send('User not found');
     }
-    res.render('editProfile', { user });
+    res.render('editProfile', { user }); // Assuming 'editProfile.hbs' is your edit view template
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
@@ -33,24 +46,29 @@ router.get('/edit/:username', async (req, res) => {
 });
 
 // Edit profile (POST request)
-router.post('/edit/:username', async (req, res) => {
+router.post('/edit/:username', upload.single('newProfilePicture'), async (req, res) => {
   try {
     const { username } = req.params;
-    const { profilePicture, description } = req.body;
+    const { description } = req.body;
+    let profilePicture = req.body.profilePicture;
 
-    const user = await User.findOneAndUpdate(
+    if (req.file) {
+      profilePicture = `/uploads/${req.file.filename}`;
+    }
+
+    const updatedUser = await User.findOneAndUpdate(
       { username },
       { profilePicture, description },
-      { new: true }
+      { new: true } // Return the updated document
     );
 
-    if (!user) {
+    if (!updatedUser) {
       return res.status(404).send('User not found');
     }
 
     res.redirect(`/profile/${username}`);
   } catch (err) {
-    console.error(err);
+    console.error('Error updating profile:', err);
     res.status(500).send('Server error');
   }
 });

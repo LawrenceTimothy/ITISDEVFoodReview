@@ -7,9 +7,10 @@ const path = require('path');
 const app = express();
 const hbs = require('hbs')
 const exhbs = require('express-handlebars')
-const templatePath = path.join(__dirname, "./src/views")
+const viewPath = path.join(__dirname, "./src/views")
+const 
 // Connect to MongoDB
-connectDB();
+connectDB()
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
