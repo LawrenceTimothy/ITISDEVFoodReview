@@ -1,0 +1,19 @@
+<!-- src/views/viewFoods.hbs -->
+
+<h1>Featured Foods</h1>
+
+{{#each foods}}
+<div class="food-item">
+  <img src="{{ pictureUrl }}" alt="{{ name }}">
+  <h2>{{ name }}</h2>
+  <p>Overall Rating: {{ overallRating }}</p>
+  <p>Description: {{ description }}</p>
+  <p>Ingredients: 
+    {{#each ingredients}}
+      {{this}}{{#unless @last}}, {{/unless}}
+    {{/each}}
+  </p>
+  <p>Calorie Count: {{ calorieCount }}</p>
+  <p>Best Partnered With: {{ bestPartneredWith }}</p>
+</div>
+{{/each}}
