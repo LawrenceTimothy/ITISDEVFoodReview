@@ -8,9 +8,9 @@ const app = express();
 const hbs = require('hbs')
 const exhbs = require('express-handlebars')
 const viewPath = path.join(__dirname, "./src/views")
-const 
+
 // Connect to MongoDB
-connectDB()
+connectDB();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,7 +19,7 @@ app.use(express.static('public'));
 
 // Handlebars
 app.set('view engine', 'hbs');
-app.set('views', templatePath); // Adjust views directory path
+app.set('views', viewPath); // Adjust views directory path
 
 // Authentication middleware for demo purposes
 app.use((req, res, next) => {
