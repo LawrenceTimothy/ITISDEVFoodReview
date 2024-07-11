@@ -157,6 +157,7 @@ button.active {
     position: absolute;
     background: rgba(8, 120, 48, 0.40);
     border-radius: 70px;
+
 }
 
 .EditProfileButton,
@@ -164,6 +165,7 @@ button.active {
     width: 111.87px;
     height: 39.70px;
     position: absolute;
+    z-index: 10;
 }
 
 .EditProfileButton{
@@ -206,16 +208,28 @@ button.active {
     left: 267.32px;
     top: 69px;
     position: absolute;
+    z-index: 10;
+
+}
+
+.newProfilePicture{
+    width: 456.45px;
+    height: 48px;
+    left: 267.32px;
+    top: 35px;
+    position: absolute;
+    z-index: 10;
 }
 
 .UsernameLabel,
-.BioLabel {
+.BioLabel, .newProfilePicture {
     color: black;
     font-size: 19px;
     font-family: Inter;
     font-style: italic;
-    font-weight: 700;
     word-wrap: break-word;
+    z-index: 10;
+
 }
 
 .UsernameValue,
@@ -226,6 +240,19 @@ button.active {
     font-style: italic;
     font-weight: 300;
     word-wrap: break-word;
+    z-index: 10;
+}
+
+#newProfilePicture{
+    position: relative;
+    top: 35px;
+    left: 450px;
+    z-index: 500;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
 }
 
 .userdescription {
@@ -235,7 +262,9 @@ button.active {
     top: 105px;
     position: absolute;
     word-wrap: break-word;
-    overflow:hidden;
+    overflow: hidden;
+    z-index: 10;
+
 }
 
 .ProfilePicture {
@@ -245,6 +274,8 @@ button.active {
     top: 38px;
     position: absolute;
     border-radius: 26px;
+    z-index: 10;
+
 }
 
 .commentheader, .reviewheader {
@@ -252,5 +283,42 @@ button.active {
     font-family: Inter;
     position: relative;
     top: 180px;
+    z-index: 10;
+
+}
+
+.editProfileForm{
+    width: 889.66px;
+    height: 335px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    z-index: 10;
+
+}
+
+#username{
+    position: relative;
+    top: 35px;
+    left: 450px;
+    z-index: 500;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
+}
+
+#userdescription {
+    position: relative;
+    top: 35px;
+    left: 450px;
+    z-index: 500;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
+    
 }
 

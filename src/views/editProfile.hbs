@@ -1,19 +1,61 @@
-{{!< layouts/main }}
-
-<h1>Edit Profile</h1>
-
-<form action="/profile/edit/{{user.username}}" method="POST" enctype="multipart/form-data">
-  <div>
-    <label for="currentProfilePicture">Current Profile Picture:</label>
-    <img src="{{user.profilePicture}}" alt="Current Profile Picture" style="max-width: 200px; max-height: 200px;">
-  </div>
-  <div>
-    <label for="newProfilePicture">Update Profile Picture:</label>
-    <input type="file" name="newProfilePicture" id="newProfilePicture" accept="image/*">
-  </div>
-  <div>
-    <label for="description">Description:</label>
-    <textarea name="description" id="description">{{user.description}}</textarea>
-  </div>
-  <button type="submit">Save Changes</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile.css">
+    <script src="/javascript/button.js" defer></script>
+</head>
+<div class="Header">
+    <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+        <div class="KitchenCityFoodCommunity">
+            <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+            <span class="KitchenCity">Kitchen City</span>
+            <span> </span>
+            <span class="FoodCommunity">Food Community</span>
+        </div>
+    
+    <div class="navis">
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+        <button class="HomeButton">
+            <div class="Home">HOME</div>
+        </button>
+        <button class="ViewFoodsButton">
+            <div class="ViewFoods">VIEW FOODS</div>
+        </button>
+        <button class="MealsOfTheWeekButton">
+            <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+        </button>
+        <button class="ProfileButton">
+            <div class="Profile">PROFILE</div>
+        </button>
+        </div>
+    </div>
+</div>
+<div class="ProfileContainer">
+  <form class="editProfileForm" action="/profile/edit/{{user.username}}" method="POST" enctype="multipart/form-data">
+    <div>
+      <img src="{{user.profilePicture}}" class="ProfilePicture">
+    </div>
+    <div>
+      <label class="newProfilePicture">Update Profile Picture:</label>
+      <input type="file" name="newProfilePicture" id="newProfilePicture" accept="image/*">
+    </div>
+    <div>
+      <label class="username">USERNAME:</label>
+      <textarea name="username" id="username">{{user.username}}</textarea>
+    </div>
+    <div>
+      <label class="userdescription">Bio:</label>
+      <textarea name="userdescription" id="userdescription">{{user.description}}</textarea>
+    </div>
+    <div class="ProfilePageButton">
+        <button class="EditProfileButton">
+            <span class="EditProfile" type="submit">SAVE</span>
+        </button>
+        <button class="LogoutButton">
+            <span class="Logout">CANCEL</span>
+        </button>
+    </div>
+  </form>
+</div>
