@@ -142,156 +142,11 @@ button.active {
     z-index: 1000;
 }
 
-
-
-.foodCards {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap as needed */
-    justify-content: center; /* Center the cards horizontally */
-    margin: 20px;
-    top: 125px;
-}
-.food-item {
-    width: 421px;
-    height: 526px;
-    left: 7px;
-    top: 21px;
-    position: relative;
-    background: rgba(255, 183, 0, 0.514);
-    border-radius: 43px;
-    border-color: black;
-}
-
-.pictureUrl {
-    width: 421px;
-    height: 240px;
-    top: 94px;
-    position: absolute;
-}
-
-.foodName {
-    width: 255px;
-    height: 45px;
-    left: 39px;
-    top: 31px;
-    position: absolute;
-    color: black;
-    font-size: 36px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 500;
-    word-wrap: break-word;
-    overflow: hidden;
-}
-
-.OverallRating {
-    width: 279px;
-    height: 14px;
-    left: 39px;
-    top: 75px;
-    position: absolute;
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 200;
-    word-wrap: break-word;
-}
-
-.description {
-    width: 366px;
-    height: fit-content;
-    min-height: 67px;
-    left: 27px;
-    top: 345px;
-    position: relative;
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 400;
-    word-wrap: break-word;
-    overflow: hidden;
-}
-
-.ingredients {
-    width: 173px;
-    height: 123px;
-    left: 27px;
-    top: 327px;
-    position: relative;
-}
-
-.ingredients span:first-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
-}
-
-.ingredients span:last-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-.CalorieCount {
-    width: 192px;
-    height: 47px;
-    left: 208px;
-    top: 203px;
-    position: relative;
-}
-
-.CalorieCount span:first-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
-}
-
-.CalorieCount span:last-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-.BestPartneredWith {
-    width: 192px;
-    height: 47px;
-    left: 208px;
-    top: 203px;
-    position: relative;
-}
-
-.BestPartneredWith span:first-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
-}
-
-.BestPartneredWith span:last-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
 .ProfileContainer {
-    width: 100%;
-    height: 100%;
+    width: 890px;
+    height: 336px;
     position: relative;
+    top: 125px;
 }
 
 .ProfilePageButton {
@@ -391,3 +246,11 @@ button.active {
     position: absolute;
     border-radius: 26px;
 }
+
+.commentheader, .reviewheader {
+    font-size: 30px;
+    font-family: Inter;
+    position: relative;
+    top: 180px;
+}
+

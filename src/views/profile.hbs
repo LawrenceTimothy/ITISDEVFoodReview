@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="foods.css">
+    <link rel="stylesheet" href="/profile.css">
     <script src="/javascript/button.js" defer></script>
 </head>
 <div class="Header">
@@ -52,15 +52,18 @@
     <img class="ProfilePicture" src="/images/{{user.profilePicture}}" />
 </div>
 
-
-<ul>
+<div class="reviewheader">Latest Reviews:
+    <ul>
   {{#each user.reviews}}
     <li>{{this}}</li>
   {{/each}}
 </ul>
-<h2>Latest Comments</h2>
-<ul>
+</div>
+<div class="commentheader">Latest Comments
+    <ul>
   {{#each user.comments}}
     <li>{{this}}</li>
   {{/each}}
 </ul>
+
+</div>
