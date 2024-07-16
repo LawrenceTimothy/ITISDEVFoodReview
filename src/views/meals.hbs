@@ -1,0 +1,17 @@
+<h1>Meals of the Week</h1>
+
+{{#each meals}}
+<div class="meal-item">
+  <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
+  <h2>{{name}}</h2>
+  <p>Description: {{description}}</p>
+  <p>Price: ${{price}}</p>
+  <p>Availability: {{#if availability}}Available{{else}}Unavailable{{/if}}</p>
+  <p>Discounts: 
+    {{#each discounts}}
+      {{this}}{{#unless @last}}, {{/unless}}
+    {{/each}}
+  </p>
+  <a href="/meals/{{_id}}">Details</a>
+</div>
+{{/each}}

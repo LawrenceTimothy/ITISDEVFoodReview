@@ -1,0 +1,11 @@
+<h1>Bookmarks</h1>
+
+{{#each bookmarks}}
+<div class="bookmark-item">
+  <img src="{{meal.pictureUrl}}" alt="{{meal.name}}" style="max-width: 200px; max-height: 200px;">
+  <h2>{{meal.name}}</h2>
+  <p>Description: {{meal.description}}</p>
+  <p>Price: ${{meal.price}}</p>
+  <p>Availability: {{#if meal.availability}}Available{{else}}Unavailable{{/if}}</p>
+</div>
+{{/each}}

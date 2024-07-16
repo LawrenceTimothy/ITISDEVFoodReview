@@ -1,0 +1,12 @@
+<h1>Food Polls</h1>
+<form action="/polls/vote" method="POST">
+  {{#each poll.mealOptions}}
+  <div>
+    <input type="radio" name="mealId" value="{{this._id}}" id="meal-{{this._id}}">
+    <label for="meal-{{this._id}}">{{this.name}}</label>
+  </div>
+  {{/each}}
+  <input type="hidden" name="pollId" value="{{poll._id}}">
+  <input type="hidden" name="userId" value="{{userId}}">
+  <button type="submit">Vote</button>
+</form>

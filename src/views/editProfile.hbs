@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile.css">
+    <script src="/javascript/button.js" defer></script>
+    <title>Edit Profile</title>
+</head>
+<body>
+<div class="Header">
+    <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+    <div class="KitchenCityFoodCommunity">
+        <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+        <span class="KitchenCity">Kitchen City</span>
+        <span> </span>
+        <span class="FoodCommunity">Food Community</span>
+    </div>
+
+    <div class="navis">
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
+        <button class="HomeButton">
+            <div class="Home">HOME</div>
+        </button>
+        <button class="ViewFoodsButton">
+            <div class="ViewFoods">VIEW FOODS</div>
+        </button>
+        <button class="MealsOfTheWeekButton">
+            <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+        </button>
+        <button class="ProfileButton">
+            <div class="Profile">PROFILE</div>
+        </button>
+    </div>
+</div>
+
+<div class="ProfileContainer">
+    <form class="editProfileForm" action="/profile/edit/{{user.username}}" method="POST" enctype="multipart/form-data">
+        <div>
+            <img src="{{user.profilePicture}}" class="ProfilePicture" alt="Current Profile Picture">
+        </div>
+        <div>
+            <label for="newProfilePicture" class="newProfilePicture">Update Profile Picture:</label>
+            <input type="file" name="newProfilePicture" id="newProfilePicture" accept="image/*">
+        </div>
+        <div>
+            <label for="username" class="username">USERNAME:</label>
+            <input type="text" name="username" id="username" value="{{user.username}}">
+        </div>
+        <div>
+            <label for="userdescription" class="userdescription">Bio:</label>
+            <textarea name="userdescription" id="userdescription">{{user.description}}</textarea>
+        </div>
+        <div class="ProfilePageButton">
+            <button class="EditProfileButton" type="submit">
+                <span class="EditProfile">SAVE</span>
+            </button>
+            <button class="LogoutButton" type="button">
+                <span class="Logout">CANCEL</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
