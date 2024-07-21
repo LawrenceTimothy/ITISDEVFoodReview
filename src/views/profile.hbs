@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile.css">
+    <script src="/javascript/button.js" defer></script>
+    <title>User Profile</title>
+</head>
+<body>
+    <div class="Header">
+        <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+        <div class="KitchenCityFoodCommunity">
+            <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+            <span class="KitchenCity">Kitchen City</span>
+            <span> </span>
+            <span class="FoodCommunity">Food Community</span>
+        </div>
+        <div class="navis">
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="HomeButton">
+                <a href="http://localhost:3000/">
+                <div class="Home">HOME</div>
+            </button>
+            <a href="http://localhost:3000/foods">
+                <button class="ViewFoodsButton">
+                    <div class="ViewFoods">VIEW FOODS</div>
+                </button>
+            </a>
+            <button class="MealsOfTheWeekButton">
+                <a href="http://localhost:3000/meals">
+                <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+            </button>
+            <button class="ProfileButton">
+                <div class="Profile">PROFILE</div>
+            </button>
+        </div>
+    </div>
+    <div class="ProfileContainer">
+        <div class="ProfilePageButton">
+            <a href="/profile/edit/{{user.username}}">
+                <button class="EditProfileButton">
+                    <span class="EditProfile">EDIT PROFILE</span>
+                </button>
+            </a>
+            <button class="LogoutButton">
+                <span class="Logout">LOGOUT</span>
+            </button>
+        </div>
+        <div class="username">
+            <span class="UsernameLabel">USERNAME: </span>
+            <span class="UsernameValue">{{user.username}}</span>
+        </div>
+        <div class="userdescription">
+            <span class="BioLabel">Bio:</span>
+            <span class="BioValue">{{user.description}}</span>
+        </div>
+        <img class="ProfilePicture" src="{{user.profilePicture}}" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+    </div>
+    <div class="reviewheader">Latest Reviews:
+        <ul>
+            {{#each user.reviews}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="commentheader">Latest Comments
+        <ul>
+            {{#each user.comments}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</body>
+</html>

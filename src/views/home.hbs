@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/home.css">
+    <script src="/javascript/button.js" defer></script>
+    <title>Kitchen City Food Community - Home</title>
+</head>
+<body>
+  <div class="Header">
+      <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+      <div class="KitchenCityFoodCommunity">
+          <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+          <span class="KitchenCity">Kitchen City</span>
+          <span> </span>
+          <span class="FoodCommunity">Food Community</span>
+      </div>
+
+      <div class="navis">
+          <div class="search">
+              <input type="text" placeholder="Search">
+          </div>
+          <button class="HomeButton">
+              <a href="http://localhost:3000/">
+              <div class="Home">HOME</div>
+          </button>
+          <button class="ViewFoodsButton">
+              <a href="http://localhost:3000/foods">
+              <div class="ViewFoods">VIEW FOODS</div>
+          </button>
+          <button class="MealsOfTheWeekButton">
+              <a href="http://localhost:3000/meals">
+              <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+          </button>
+          <button class="ProfileButton">
+              <div class="Profile">PROFILE</div>
+          </button>
+      </div>
+  </div>
+
+  <div class="content">
+    <h1>Welcome to Kitchen City Food Community</h1>
+    <p>Today's Date: {{today}}</p>
+    <h2>Meals of the Week</h2>
+    <div class="meals-container">
+      {{#each mealsOfTheWeek}}
+      <div class="meal-item">
+        <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
+        <h2>{{name}}</h2>
+        <p>Description: {{description}}</p>
+        <p>Price: ${{price}}</p>
+        <p>Availability: {{#if availability}}Available{{else}}Unavailable{{/if}}</p>
+        <p>Discounts: 
+          {{#each discounts}}
+            {{this}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+        </p>
+        <a href="/meals/{{_id}}">Details</a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</body>
+</html>
