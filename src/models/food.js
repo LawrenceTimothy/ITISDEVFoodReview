@@ -7,7 +7,8 @@ const foodSchema = new mongoose.Schema({
   description: { type: String },
   ingredients: { type: [String] },
   calorieCount: { type: Number },
-  bestPartneredWith: { type: String }
+  bestPartneredWith: { type: String },
+  isMealOfTheWeek: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Food', foodSchema);

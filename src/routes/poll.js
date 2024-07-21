@@ -1,46 +1,48 @@
-// routes/polls.js
 const express = require('express');
 const router = express.Router();
 const Poll = require('../models/poll');
-const Meal = require('../models/meal');
-const User = require('../models/user');
 
-// Get current poll
+// Get the current poll
 router.get('/', async (req, res) => {
   try {
-    const currentPoll = await Poll.findOne({ endDate: { $gte: new Date() } }).populate('mealOptions').lean();
-    if (!currentPoll) {
-      return res.status(404).send('No active poll found');
+    const poll = await Poll.findOne().lean();
+    if (!poll) {
+      return res.status(404).send('Poll not found');
     }
-    res.render('poll', { poll: currentPoll });
+    res.render('poll', { poll });
   } catch (err) {
-    console.error(err);
+    console.error('Error details:', err);
     res.status(500).send('Server error');
   }
-});
 
-// Vote in the poll
+  // Vote for an option
 router.post('/vote', async (req, res) => {
   try {
-    const { userId, mealId, pollId } = req.body;
-    const poll = await Poll.findById(pollId);
+    const { optionName } = req.body;
+
+    // Find the poll (assuming only one poll exists)
+    const poll = await Poll.findOne();
     if (!poll) {
       return res.status(404).send('Poll not found');
     }
 
-    const alreadyVoted = poll.votes.some(vote => vote.user.toString() === userId);
-    if (alreadyVoted) {
-      return res.status(400).send('User has already voted');
+    // Find the option within the poll by name
+    const option = poll.options.find(o => o.name === optionName);
+    if (!option) {
+      return res.status(404).send('Option not found');
     }
 
-    poll.votes.push({ user: userId, meal: mealId });
-    await poll.save();
+    // Increment votes
+    option.votes += 1;
 
+    // Save poll
+    await poll.save();
     res.redirect('/polls');
   } catch (err) {
-    console.error(err);
+    console.error('Error details:', err);
     res.status(500).send('Server error');
   }
+});
 });
 
 module.exports = router;

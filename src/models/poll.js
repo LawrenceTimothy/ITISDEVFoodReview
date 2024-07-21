@@ -1,14 +1,14 @@
-// models/poll.js
 const mongoose = require('mongoose');
 
 const pollSchema = new mongoose.Schema({
-  mealOptions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meal', required: true }],
-  votes: [{
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    meal: { type: mongoose.Schema.Types.ObjectId, ref: 'Meal' }
-  }],
-  startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true }
+  question: { type: String, required: true },
+  options: [
+    {
+      name: { type: String, required: true },
+      pictureUrl: { type: String },
+      votes: { type: Number, default: 0 }
+    }
+  ]
 });
 
 module.exports = mongoose.model('Poll', pollSchema);

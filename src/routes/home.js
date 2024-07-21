@@ -1,14 +1,12 @@
-// src/routes/foods.js
-
 const express = require('express');
 const router = express.Router();
-const Food = require('../models/food'); // Adjust path as per your project structure
+const Meal = require('../models/meal');
 
-// View all foods
+// Get home page
 router.get('/', async (req, res) => {
   try {
-    const foods = await Food.find().lean();
-    res.render('viewFoods', { foods });
+    const mealsOfTheWeek = await Meal.find({ isMealOfTheWeek: true }).lean();
+    res.render('home', { mealsOfTheWeek, today: new Date().toLocaleDateString() });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');

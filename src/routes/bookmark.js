@@ -1,27 +1,52 @@
 // routes/bookmarks.js
 const express = require('express');
 const router = express.Router();
-const Bookmark = require('../models/bookmark');
 const User = require('../models/user');
 const Meal = require('../models/meal');
 
-// Get all bookmarks for a user
-router.get('/:userId', async (req, res) => {
+// Add a meal to bookmarks
+router.post('/add', async (req, res) => {
   try {
-    const bookmarks = await Bookmark.find({ user: req.params.userId }).populate('meal').lean();
-    res.render('bookmarks', { bookmarks });
+    const { username, mealId } = req.body;
+    const user = await User.findOne({ username });
+    if (!user) return res.status(404).send('User not found');
+    
+    if (!user.bookmarkedMeals.includes(mealId)) {
+      user.bookmarkedMeals.push(mealId);
+      await user.save();
+    }
+
+    res.redirect(`/profile/${username}`);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 });
 
-// Add a bookmark
-router.post('/:userId/:mealId', async (req, res) => {
+// Remove a meal from bookmarks
+router.post('/remove', async (req, res) => {
   try {
-    const newBookmark = new Bookmark({ user: req.params.userId, meal: req.params.mealId });
-    await newBookmark.save();
-    res.redirect(`/bookmarks/${req.params.userId}`);
+    const { username, mealId } = req.body;
+    const user = await User.findOne({ username });
+    if (!user) return res.status(404).send('User not found');
+    
+    user.bookmarkedMeals = user.bookmarkedMeals.filter(id => id.toString() !== mealId);
+    await user.save();
+
+    res.redirect(`/profile/${username}`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
+// View bookmarked meals
+router.get('/:username', async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username }).populate('bookmarkedMeals').lean();
+    if (!user) return res.status(404).send('User not found');
+    
+    res.render('bookmarks', { user });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');

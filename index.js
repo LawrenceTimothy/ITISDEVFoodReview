@@ -4,8 +4,10 @@ const connectDB = require('./config/db'); // Adjust path to db.js in src/config
 const profileRoutes = require('./src/routes/profile'); // Adjust path to profile.js in src/routes
 const foodsRouter = require('./src/routes/foods');
 const mealsRouter = require('./src/routes/meals');
+const mealsOfTheWeekRouter = require('./src/routes/mealsOfTheWeek');
 const pollsRouter = require('./src/routes/poll');
 const bookmarksRouter = require('./src/routes/bookmark');
+const homeRouter = require('./src/routes/home');
 const path = require('path');
 const app = express();
 const hbs = require('hbs')
@@ -35,8 +37,10 @@ app.use((req, res, next) => {
 app.use('/profile', profileRoutes);
 app.use('/foods', foodsRouter);
 app.use('/meals', mealsRouter);
+app.use('/meals-of-the-week', mealsOfTheWeekRouter);
 app.use('/polls', pollsRouter);
 app.use('/bookmarks', bookmarksRouter);
+app.use('/', homeRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

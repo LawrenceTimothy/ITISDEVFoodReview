@@ -1,4 +1,3 @@
-// models/meal.js
 const mongoose = require('mongoose');
 
 const mealSchema = new mongoose.Schema({
@@ -6,9 +5,9 @@ const mealSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   pictureUrl: { type: String },
-  availability: { type: Boolean, default: true },
-  discounts: { type: [String] },
-  votes: { type: Number, default: 0 }
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: true },
+  isMealOfTheWeek: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Meal', mealSchema);

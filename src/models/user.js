@@ -6,6 +6,8 @@ const UserSchema = new mongoose.Schema({
   description: { type: String, default: '' },
   reviews: [String],
   comments: [String],
+  bookmarkedMeals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meal' }]
+
 });
 
 module.exports = mongoose.model('User', UserSchema);
