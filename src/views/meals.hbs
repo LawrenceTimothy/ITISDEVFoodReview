@@ -1,3 +1,4 @@
+<!-- views/meals.hbs -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,17 +42,18 @@
     </div>
 
     <h1>Meals of the Week</h1>
-  <p>Today's Date: {{today}}</p>
+    <p>Today's Date: {{today}}</p>
   
-  {{#each meals}}
-    <div class="meal-item">
-      <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
-      <h2>{{name}}</h2>
-      <p>Description: {{description}}</p>
-      <p>Price: Php{{price}}</p>
-      <p>Start Date: {{startDate}}</p>
-      <p>End Date: {{endDate}}</p>
-    </div>
-  {{/each}}
+    {{#each meals}}
+      <div class="meal-item">
+        <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
+        <h2>{{name}}</h2>
+        <p>Description: {{description}}</p>
+        <p>Price: Php{{price}}</p>
+        <p>Start Date: {{startDate}}</p>
+        <p>End Date: {{endDate}}</p>
+        <a href="/meals/edit/{{_id}}">Edit</a>
+      </div>
+    {{/each}}
 </body>
 </html>

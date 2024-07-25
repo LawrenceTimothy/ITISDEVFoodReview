@@ -11,8 +11,12 @@ const homeRouter = require('./src/routes/home');
 const path = require('path');
 const app = express();
 const hbs = require('hbs')
+hbs.registerHelper('JSONstringify', function(context) {
+  return JSON.stringify(context);
+});
 const exhbs = require('express-handlebars')
 const viewPath = path.join(__dirname, "./src/views")
+
 
 // Connect to MongoDB
 connectDB();

@@ -1,0 +1,18 @@
+<form action="/polls/edit/{{poll._id}}" method="POST" enctype="multipart/form-data">
+  <label for="question">Question:</label>
+  <input type="text" id="question" name="question" value="{{poll.question}}" required>
+
+  <h2>Options:</h2>
+  {{#each poll.options as |option index|}}
+    <div>
+      <label for="option-{{index}}">Option {{indexPlusOne}}:</label>
+      <input type="text" id="option-{{index}}" name="options[{{index}}]" value="{{option.name}}" required>
+      <input type="hidden" name="optionId[{{index}}]" value="{{option._id}}">
+
+      <label for="picture-{{index}}">Upload Image:</label>
+      <input type="file" id="picture-{{index}}" name="pictures[{{index}}]">
+    </div>
+  {{/each}}
+
+  <button type="submit">Update Poll</button>
+</form>
