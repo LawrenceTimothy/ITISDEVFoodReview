@@ -33,8 +33,14 @@
     z-index: 1000;
 }
 
-.HomeButton {
+.PollButton {
     left: 1360px;
+    top: 43px;
+    z-index: 1000;
+}
+
+.HomeButton {
+    left: 1243px;
     top: 43px;
     z-index: 1000;
 }
@@ -56,6 +62,7 @@ button.active {
 .Profile,
 .MealsOfTheWeek,
 .ViewFoods,
+.Poll,
 .Home {
     position: absolute;
     color: black;
@@ -98,7 +105,7 @@ button.active {
     width: 239px;
     height: 40px;
     padding: 12px 16px;
-    left: 1137px;
+    left: 1000px;
     top: 30px;
     position: absolute;
     background: rgba(255, 255, 255, 0);

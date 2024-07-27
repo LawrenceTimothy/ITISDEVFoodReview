@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles.css">
-  <title>Poll</title>
+  <link rel="stylesheet" href="poll.css">
+  <title>Kitchen City Food Community - Poll</title>
 </head>
 <body>
+<<<<<<< Updated upstream
   <h1>{{poll.question}}</h1>
   <ul>
     {{#each poll.options}}
@@ -20,5 +21,64 @@
       </li>
     {{/each}}
   </ul>
+=======
+  <div class="Header">
+    <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+    <div class="KitchenCityFoodCommunity">
+      <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+      <span class="KitchenCity">Kitchen City</span>
+      <span> </span>
+      <span class="FoodCommunity">Food Community</span>
+    </div>
+    <div class="navis">
+      <div class="search">
+        <input type="text" placeholder="Search">
+      </div>
+      <button class="HomeButton">
+        <a href="http://localhost:3000/">
+          <div class="Home">HOME</div>
+        </a>
+      </button>
+      <button class="ViewFoodsButton">
+        <a href="http://localhost:3000/foods">
+          <div class="ViewFoods">VIEW FOODS</div>
+        </a>
+      </button>
+      <button class="MealsOfTheWeekButton">
+        <a href="http://localhost:3000/meals">
+          <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+        </a>
+      </button>
+      <button class="ProfileButton">
+        <a href="http://localhost:3000/profile">
+          <div class="Profile">PROFILE</div>
+        </a>
+      </button>
+      <button class="PollButton">
+        <a href="http://localhost:3000/polls">
+          <div class="Poll">POLL</div>
+        </a>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Current Poll</h1>
+    <h2>{{poll.question}}</h2>
+    <form action="/polls/vote" method="POST">
+      <div class="poll-options-container">
+        {{#each poll.options}}
+        <div class="poll-option">
+          <input type="radio" id="{{name}}" name="optionName" value="{{name}}" required>
+          <label for="{{name}}">{{name}}</label>
+          {{#if pictureUrl}}
+          <img src="{{pictureUrl}}" alt="{{name}}" class="poll-option-img">
+          {{/if}}
+        </div>
+        {{/each}}
+      </div>
+      <button type="submit" class="submit-button">Vote</button>
+    </form>
+  </div>
+>>>>>>> Stashed changes
 </body>
 </html>
