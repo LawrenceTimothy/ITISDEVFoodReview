@@ -29,20 +29,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get the current poll
-router.get('/polls', async (req, res) => {
-  try {
-    const poll = await Poll.findOne().lean();
-    if (!poll) {
-      return res.status(404).send('Poll not found');
-    }
-    res.render('poll', { poll });
-  } catch (err) {
-    console.error('Error details:', err);
-    res.status(500).send('Server error');
-  }
-});
-
 // Vote for an option
 router.post('/polls/vote', async (req, res) => {
   try {
@@ -65,10 +51,10 @@ router.post('/polls/vote', async (req, res) => {
 
     // Save poll
     await poll.save();
-    res.redirect('/polls');
+    res.json({ success: true, votes: option.votes });
   } catch (err) {
     console.error('Error details:', err);
-    res.status(500).send('Server error');
+    res.status(500).json({ success: false, error: 'Server error' });
   }
 });
 
