@@ -1,0 +1,26 @@
+<!-- views/poll.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Poll</title>
+</head>
+<body>
+  <h1>{{poll.question}}</h1>
+  <ul>
+    {{#each poll.options}}
+      <li>
+        <img src="{{pictureUrl}}" alt="{{name}}" style="width:100px; height:100px;">
+        <span>{{name}} (Votes: {{votes}})</span>
+        <form action="/polls/vote" method="POST">
+          <input type="hidden" name="optionName" value="{{name}}">
+          <button type="submit">Vote</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+  <a href="/polls/edit/{{poll._id}}">Edit Poll</a>
+</body>
+</html>
