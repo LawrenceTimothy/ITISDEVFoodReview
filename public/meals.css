@@ -3,9 +3,9 @@
     height: 119px;
     position: fixed;
     z-index: 1000;
-  }
-  
-  .HeaderBackground {
+}
+
+.HeaderBackground {
     width: 1923px;
     height: 119px;
     left: 0px;
@@ -13,33 +13,33 @@
     position: fixed;
     filter: blur(4px);
     z-index: 999;
-  }
-  
-  .ProfileButton {
+}
+
+.ProfileButton {
     left: 1711px;
     top: 43px;
     z-index: 1000;
-  }
-  
-  .MealsOfTheWeekButton {
+}
+
+.MealsOfTheWeekButton {
     left: 1594px;
     top: 43px;
     z-index: 1000;
-  }
-  
-  .ViewFoodsButton {
+}
+
+.ViewFoodsButton {
     left: 1477px;
     top: 43px;
     z-index: 1000;
-  }
-  
-  .HomeButton {
+}
+
+.HomeButton {
     left: 1360px;
     top: 43px;
     z-index: 1000;
-  }
-  
-  button {
+}
+
+button {
     width: 105.88px;
     height: 39.70px;
     position: absolute;
@@ -47,16 +47,16 @@
     background: #FFB800;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  button.active {
+}
+
+button.active {
     background: #087830;
-  }
-  
-  .Profile,
-  .MealsOfTheWeek,
-  .ViewFoods,
-  .Home {
+}
+
+.Profile,
+.MealsOfTheWeek,
+.ViewFoods,
+.Home {
     position: absolute;
     color: black;
     font-size: 12px;
@@ -64,37 +64,37 @@
     font-style: italic;
     font-weight: 700;
     word-wrap: break-word;
-  }
-  
-  .Profile {
+}
+
+.Profile {
     width: 54px;
     height: 15px;
     left: 25px;
     top: 12px;
-  }
-  
-  .MealsOfTheWeek {
+}
+
+.MealsOfTheWeek {
     width: 63px;
     height: 30px;
     left: 21px;
     top: 5px;
-  }
-  
-  .ViewFoods {
+}
+
+.ViewFoods {
     width: 83px;
     height: 23px;
     left: 11px;
     top: 12px;
-  }
-  
-  .Home {
+}
+
+.Home {
     width: 39px;
     height: 17px;
     left: 33px;
     top: 12px;
-  }
-  
-  .search {
+}
+
+.search {
     width: 239px;
     height: 40px;
     padding: 12px 16px;
@@ -107,15 +107,15 @@
     align-items: center;
     gap: 8px;
     z-index: 1000;
-  }
-  
-  .navis {
+}
+
+.navis {
     width: fit-content;
     align-items: end;
     row-gap: 8px;
-  }
-  
-  .KitchenCityFoodCommunity {
+}
+
+.KitchenCityFoodCommunity {
     width: 692px;
     height: 51px;
     left: 34px;
@@ -125,36 +125,48 @@
     font-weight: 900;
     word-wrap: break-word;
     z-index: 1000;
-  }
-  
-  .KitchenCity {
+}
+
+.KitchenCity {
     color: #FFB800;
-  }
-  
-  .FoodCommunity {
+}
+
+.FoodCommunity {
     color: #087830;
-  }
-  
-  .Logo1 {
+}
+
+.Logo1 {
     top: auto;
     width: 79px;
     height: 73px;
     z-index: 1000;
-  }
-  
-  .content {
+}
+
+.content {
     text-align: center;
     padding-top: 150px;
-  }
-  
-  .meals-container {
+}
+
+.content h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #087830;
+    text-shadow: 3px 3px 5px #000000;
+}
+
+.content p {
+    font-size: 20px;
+    color: black
+}
+
+.meals-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-  }
-  
-  .meal-item {
+}
+
+.meal-item {
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
@@ -162,74 +174,67 @@
     max-width: 300px;
     background: #FFB800;
     color: black;
-  }
-  
-  .meal-item h2 {
+}
+
+.meal-item h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  .meal-item p {
+}
+
+.meal-item p {
     margin: 5px 0;
-  }
-  
-  .meal-item img {
+}
+
+.meal-item img {
     border-radius: 10px;
-  }
-  
-  .meal-item a {
-    display: block;
-    margin: 10px auto;
+}
+
+.meal-item a {
+    display: block;  
+    margin: 10px auto; 
     padding: 10px 20px;
     background: #087830;
     color: white;
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
-  }
-  
-  /* Poll */
-  .poll-container {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .poll-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .poll-item {
-    border: 1px solid #ddd;
-    border-radius: 10px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
     padding: 20px;
-    text-align: center;
-    max-width: 200px;
-    background: #FFB800;
-    color: black;
-  }
-  
-  .poll-item img {
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
     border-radius: 10px;
-  }
-  
-  .poll-item form {
-    margin-top: 10px;
-  }
-  
-  /* Add this new style for the title */
-  .title {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 36px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
     font-weight: bold;
-    color: green;
-    text-shadow: 2px 2px 4px #000000;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
