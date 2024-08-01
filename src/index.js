@@ -13,6 +13,12 @@ const { v4: uuidv4 } = require('uuid'); // RENZO: FOR REVIEW ID GENERATION
 const foodRoutes = require("../routes/foodRoutes.js");
 const userRoutes = require("../routes/userRoutes.js");
 const reviewRoutes = require("../routes/reviewRoutes.js");
+const profileRoutes = require('../routes/profileRoutes'); 
+const foodsRouter = require('../routes/foodsRoutes');
+const mealsRouter = require('../routes/mealsRoutes');
+const mealsOfTheWeekRouter = require('../routes/mealsOfTheWeekRoutes');
+const pollsRouter = require('../routes/pollRoutes');
+const homeRouter = require('../routes/homeRoutes');
 
 const templatePath = path.join(__dirname, "../views")
 
@@ -38,6 +44,12 @@ app.use(session({
 app.use("/foods", foodRoutes);
 app.use("/users", userRoutes)
 app.use("/reviews", reviewRoutes);
+app.use('/profile', profileRoutes);
+app.use('/foods', foodsRouter);
+app.use('/meals', mealsRouter);
+app.use('/meals-of-the-week', mealsOfTheWeekRouter);
+app.use('/polls', pollsRouter);
+app.use('/', homeRouter);
 
 app.get("/", (req, res) => {
     if (req.session.user) {
@@ -152,3 +164,5 @@ app.listen(3000, () => {
 hbs.registerHelper('subtract', function(a, b) { 
     return a - b;
 });
+
+// Routes

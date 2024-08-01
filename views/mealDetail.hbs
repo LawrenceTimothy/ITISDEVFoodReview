@@ -1,0 +1,11 @@
+<h1>{{meal.name}}</h1>
+<img src="{{meal.pictureUrl}}" alt="{{meal.name}}" style="max-width: 200px; max-height: 200px;">
+<p>Description: {{meal.description}}</p>
+<p>Price: ${{meal.price}}</p>
+<p>Availability: {{#if meal.availability}}Available{{else}}Unavailable{{/if}}</p>
+<p>Discounts: 
+  {{#each meal.discounts}}
+    {{this}}{{#unless @last}}, {{/unless}}
+  {{/each}}
+</p>
+<a href="/meals">Back to Meals</a>

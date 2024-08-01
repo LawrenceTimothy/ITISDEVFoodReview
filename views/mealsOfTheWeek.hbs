@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="meals.css">
+  <title>Kitchen City Food Community - Meals of the Week</title>
+</head>
+<body>
+  <div class="Header">
+    <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+    <div class="KitchenCityFoodCommunity">
+      <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+      <span class="KitchenCity">Kitchen City</span>
+      <span> </span>
+      <span class="FoodCommunity">Food Community</span>
+    </div>
+
+    <div class="navis">
+      <div class="search">
+        <input type="text" placeholder="Search">
+      </div>
+      <button class="HomeButton">
+        <a href="http://localhost:3000/">
+          <div class="Home">HOME</div>
+        </a>
+      </button>
+      <button class="PollButton">
+        <a href="http://localhost:3000/poll">
+          <div class="Poll">POLL</div>
+        </a>
+      </button>
+      <button class="PollButton">
+        <a href="http://localhost:3000/polls">
+          <div class="Poll">POLL</div>
+      </button>
+      <button class="ViewFoodsButton">
+        <a href="http://localhost:3000/foods">
+          <div class="ViewFoods">VIEW FOODS</div>
+        </a>
+      </button>
+      <button class="MealsOfTheWeekButton">
+        <a href="http://localhost:3000/meals">
+          <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+        </a>
+      </button>
+      <button class="ProfileButton">
+        <a href="http://localhost:3000/profile">
+          <div class="Profile">PROFILE</div>
+        </a>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1>Meals of the Week</h1>
+    <p>Today's Date: {{today}}</p>
+    <div class="meals-container">
+      {{#each meals}}
+      <div class="meal-item">
+        <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
+        <h2>{{name}}</h2>
+        <p>Description: {{description}}</p>
+        <p>Price: Php{{price}}</p>
+        <p>Start Date: {{startDate}}</p>
+        <p>End Date: {{endDate}}</p>
+        <button onclick="openModal('{{_id}}', '{{name}}', '{{description}}', '{{price}}')">Edit</button>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Edit Meal</h2>
+      <form id="editForm" action="/meals/edit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" id="mealId" name="mealId">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br><br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price"><br><br>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image"><br><br>
+        <button type="submit">Update Meal</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/javascript/meals.js"></script>
+</body>
+</html>

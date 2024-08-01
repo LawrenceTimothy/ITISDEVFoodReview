@@ -1,7 +1,7 @@
 // src/routes/meals.js
 const express = require('express');
 const router = express.Router();
-const Meal = require('../models/meal');
+const Meal = require('../models/mealModel');
 
 // Get all meals and today's date
 router.get('/', async (req, res) => {

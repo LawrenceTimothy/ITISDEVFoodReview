@@ -3,7 +3,7 @@
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
-const User = require('../models/user'); // Adjust path as per your project structure
+const User = require('../models/userModel'); // Adjust path as per your project structure
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({

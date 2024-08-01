@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Meal = require('../models/meal');
+const Meal = require('../models/mealModel');
 
 // Middleware to get current date
 const getCurrentDate = () => {

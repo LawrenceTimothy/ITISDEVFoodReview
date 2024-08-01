@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Poll = require('../models/poll');
+const Poll = require('../models/pollModel');
 
 // Get the current poll
 router.get('/', async (req, res) => {
