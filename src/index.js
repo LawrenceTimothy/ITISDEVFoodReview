@@ -2,6 +2,8 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const hbs = require("hbs")
+const bodyParser = require('body-parser');
+const connectDB = require('../config/db.js');
 const session = require("express-session")
 const collection = require("./mongodb")
 const exphbs = require("express-handlebars")
@@ -32,6 +34,8 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.set("view engine", "hbs")
 app.set("views", templatePath)
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }))
 app.use(session({
