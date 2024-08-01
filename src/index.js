@@ -23,6 +23,7 @@ const pollsRouter = require('../routes/pollRoutes');
 const homeRouter = require('../routes/homeRoutes');
 
 const templatePath = path.join(__dirname, "../views")
+connectDB();
 
 // Session Handling
 app.use((req, res, next) => {
@@ -32,6 +33,8 @@ app.use((req, res, next) => {
 
 // Middlewares
 app.use(express.json())
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "hbs")
 app.set("views", templatePath)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,7 +52,7 @@ app.use("/foods", foodRoutes);
 app.use("/users", userRoutes)
 app.use("/reviews", reviewRoutes);
 app.use('/profile', profileRoutes);
-app.use('/foods', foodsRouter);
+app.use('/food', foodsRouter);
 app.use('/meals', mealsRouter);
 app.use('/meals-of-the-week', mealsOfTheWeekRouter);
 app.use('/polls', pollsRouter);
