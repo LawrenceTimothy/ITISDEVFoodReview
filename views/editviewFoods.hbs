@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="foods.css">
+    <title>Edit Food Item</title>
+</head>
+<body>
+    <div class="Header">
+        <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+        <div class="KitchenCityFoodCommunity">
+            <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+            <span class="KitchenCity">Kitchen City</span>
+            <span> </span>
+            <span class="FoodCommunity">Food Community</span>
+        </div>
+    </div>
+
+    <div class="editFoodForm">
+        <h1>Edit Food Item</h1>
+        <form action="/viewfood/edit/{{food._id}}" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{food.name}}" required>
+            </div>
+            <div>
+                <label for="pictureUrl">Picture URL:</label>
+                <input type="text" id="pictureUrl" name="pictureUrl" value="{{food.pictureUrl}}" required>
+            </div>
+            <div>
+                <label for="overallRating">Overall Rating:</label>
+                <input type="number" id="overallRating" name="overallRating" value="{{food.overallRating}}" step="0.01" required>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required>{{food.description}}</textarea>
+            </div>
+            <div>
+                <label for="ingredients">Ingredients (comma-separated):</label>
+                <input type="text" id="ingredients" name="ingredients" value="{{#each food.ingredients}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}" required>
+            </div>
+            <div>
+                <label for="calorieCount">Calorie Count:</label>
+                <input type="number" id="calorieCount" name="calorieCount" value="{{food.calorieCount}}" required>
+            </div>
+            <div>
+                <label for="bestPartneredWith">Best Partnered With:</label>
+                <input type="text" id="bestPartneredWith" name="bestPartneredWith" value="{{food.bestPartneredWith}}" required>
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>
