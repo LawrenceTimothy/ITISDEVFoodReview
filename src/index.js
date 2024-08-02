@@ -16,7 +16,7 @@ const foodRoutes = require("../routes/foodRoutes.js");
 const userRoutes = require("../routes/userRoutes.js");
 const reviewRoutes = require("../routes/reviewRoutes.js");
 const profileRoutes = require('../routes/profileRoutes'); 
-const foodsRouter = require('../routes/foodsRoutes');
+const viewfoodsRouter = require('../routes/viewfoodsRoutes');
 const mealsRouter = require('../routes/mealsRoutes');
 const mealsOfTheWeekRouter = require('../routes/mealsOfTheWeekRoutes');
 const pollsRouter = require('../routes/pollRoutes');
@@ -52,11 +52,11 @@ app.use("/foods", foodRoutes);
 app.use("/users", userRoutes)
 app.use("/reviews", reviewRoutes);
 app.use('/profile', profileRoutes);
-app.use('/food', foodsRouter);
-app.use('/meals', mealsRouter);
-app.use('/meals-of-the-week', mealsOfTheWeekRouter);
-app.use('/polls', pollsRouter);
-app.use('/', homeRouter);
+//app.use('/viewfood', viewfoodsRouter);
+//app.use('/meals', mealsRouter);
+//app.use('/meals-of-the-week', mealsOfTheWeekRouter);
+//app.use('/polls', pollsRouter);
+//app.use('/', homeRouter);
 
 app.get("/", (req, res) => {
     if (req.session.user) {
@@ -173,3 +173,9 @@ hbs.registerHelper('subtract', function(a, b) {
 });
 
 // Routes
+app.use('/profile', profileRoutes);
+app.use('/viewfood', viewfoodsRouter);
+app.use('/meals', mealsRouter);
+app.use('/meals-of-the-week', mealsOfTheWeekRouter);
+app.use('/polls', pollsRouter);
+app.use('/', homeRouter);
