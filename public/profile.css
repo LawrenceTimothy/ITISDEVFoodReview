@@ -1,366 +1,248 @@
 .Header {
-    width: 1923px;
-    height: 119px;
-    position: fixed;
-    z-index: 1000;
-  }
-  
-  .HeaderBackground {
-    width: 1923px;
-    height: 119px;
-    left: 0px;
-    top: 0px;
-    position: fixed;
-    filter: blur(4px);
-    z-index: 999;
-  }
-  
-  .ProfileButton {
-    left: 1711px;
-    top: 43px;
-    z-index: 1000;
-  }
-  
-  .MealsOfTheWeekButton {
-    left: 1594px;
-    top: 43px;
-    z-index: 1000;
-  }
-  
-  .ViewFoodsButton {
-    left: 1477px;
-    top: 43px;
-    z-index: 1000;
-  }
-  
-  .HomeButton {
-    left: 1360px;
-    top: 43px;
-    z-index: 1000;
-  }
-  
-  button {
-    width: 105.88px;
-    height: 39.70px;
-    position: absolute;
-    border-radius: 86.82px;
-    background: #FFB800;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button.active {
-    background: #087830;
-  }
-  
-  .Profile,
-  .MealsOfTheWeek,
-  .ViewFoods,
-  .Home {
-    position: absolute;
-    color: black;
-    font-size: 12px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 700;
-    word-wrap: break-word;
-  }
-  
-  .Profile {
-    width: 54px;
-    height: 15px;
-    left: 25px;
-    top: 12px;
-  }
-  
-  .MealsOfTheWeek {
-    width: 63px;
-    height: 30px;
-    left: 21px;
-    top: 5px;
-  }
-  
-  .ViewFoods {
-    width: 83px;
-    height: 23px;
-    left: 11px;
-    top: 12px;
-  }
-  
-  .Home {
-    width: 39px;
-    height: 17px;
-    left: 33px;
-    top: 12px;
-  }
-  
-  .search {
-    width: 239px;
-    height: 40px;
-    padding: 12px 16px;
-    left: 1137px;
-    top: 30px;
-    position: absolute;
-    background: rgba(255, 255, 255, 0);
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    z-index: 1000;
-  }
-  
-  .navis {
-    width: fit-content;
-    align-items: end;
-    row-gap: 8px;
-  }
-  
-  .KitchenCityFoodCommunity {
-    width: 692px;
-    height: 51px;
-    left: 34px;
-    position: absolute;
-    font-size: 36px;
-    font-family: Inter;
-    font-weight: 900;
-    word-wrap: break-word;
-    z-index: 1000;
-  }
-  
-  .KitchenCity {
-    color: #FFB800;
-  }
-  
-  .FoodCommunity {
-    color: #087830;
-  }
-  
-  .Logo1 {
-    top: auto;
-    width: 79px;
-    height: 73px;
-    z-index: 1000;
-  }
-
-
-
-.foodCards {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap as needed */
-    justify-content: center; /* Center the cards horizontally */
-    margin: 20px;
-    top: 125px;
-}
-.food-item {
-    width: 421px;
-    height: 526px;
-    left: 7px;
-    top: 21px;
-    position: relative;
-    background: rgba(255, 183, 0, 0.514);
-    border-radius: 43px;
-    border-color: black;
+  width: 100%;
+  height: 119px;
+  position: fixed;
+  z-index: 1000;
 }
 
-.pictureUrl {
-    width: 421px;
-    height: 240px;
-    top: 94px;
-    position: absolute;
+.HeaderBackground {
+  width: 100%;
+  height: 119px;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  filter: blur(4px);
+  z-index: 999;
 }
 
-.foodName {
-    width: 255px;
-    height: 45px;
-    left: 39px;
-    top: 31px;
-    position: absolute;
-    color: black;
-    font-size: 36px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 500;
-    word-wrap: break-word;
-    overflow: hidden;
+.ProfileButton {
+  left: 1711px;
+  top: 43px;
+  z-index: 1000;
 }
 
-.OverallRating {
-    width: 279px;
-    height: 14px;
-    left: 39px;
-    top: 75px;
-    position: absolute;
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 200;
-    word-wrap: break-word;
+.MealsOfTheWeekButton {
+  left: 1594px;
+  top: 43px;
+  z-index: 1000;
 }
 
-.description {
-    width: 366px;
-    height: fit-content;
-    min-height: 67px;
-    left: 27px;
-    top: 345px;
-    position: relative;
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 400;
-    word-wrap: break-word;
-    overflow: hidden;
+.ViewFoodsButton {
+  left: 1477px;
+  top: 43px;
+  z-index: 1000;
 }
 
-.ingredients {
-    width: 173px;
-    height: 123px;
-    left: 27px;
-    top: 327px;
-    position: relative;
+.PollButton {
+  left: 1360px;
+  top: 43px;
+  z-index: 1000;
 }
 
-.ingredients span:first-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
+.HomeButton {
+  left: 1243px;
+  top: 43px;
+  z-index: 1000;
 }
 
-.ingredients span:last-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
+button {
+  width: 105.88px;
+  height: 39.70px;
+  position: absolute;
+  border-radius: 86.82px;
+  background: #FFB800;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.CalorieCount {
-    width: 192px;
-    height: 47px;
-    left: 208px;
-    top: 203px;
-    position: relative;
+button.active {
+  background: #087830;
 }
 
-.CalorieCount span:first-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
+.Profile,
+.MealsOfTheWeek,
+.ViewFoods,
+.Poll,
+.Home {
+  position: absolute;
+  color: black;
+  font-size: 12px;
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 700;
+  word-wrap: break-word;
 }
 
-.CalorieCount span:last-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
+.Profile {
+  width: 54px;
+  height: 15px;
+  left: 25px;
+  top: 12px;
 }
 
-.BestPartneredWith {
-    width: 192px;
-    height: 47px;
-    left: 208px;
-    top: 203px;
-    position: relative;
+.MealsOfTheWeek {
+  width: 63px;
+  height: 30px;
+  left: 21px;
+  top: 5px;
 }
 
-.BestPartneredWith span:first-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
+.ViewFoods {
+  width: 83px;
+  height: 23px;
+  left: 11px;
+  top: 12px;
 }
 
-.BestPartneredWith span:last-child {
-    color: black;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
+.Poll{
+  width: 39px;
+  height: 17px;
+  left: 33px;
+  top: 12px;
+}
+
+.Home {
+  width: 39px;
+  height: 17px;
+  left: 33px;
+  top: 12px;
+}
+
+.search {
+  width: 239px;
+  height: 40px;
+  padding: 12px 16px;
+  left: 1000px;
+  top: 30px;
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.navis{
+  width: fit-content;
+  align-items: end;
+  row-gap: 8px;
+}
+
+.KitchenCityFoodCommunity {
+  width: 692px;
+  height: 51px;
+  left: 34px;
+  position: absolute;
+  font-size: 36px;
+  font-family: Inter;
+  font-weight: 900;
+  word-wrap: break-word;
+  z-index: 1000;
+}
+
+.KitchenCity {
+  color: #FFB800;
+}
+
+.FoodCommunity {
+  color: #087830;
+}
+
+.Logo1 {
+  top: auto;
+  width: 79px;
+  height: 73px;
+  z-index: 1000;
 }
 
 .ProfileContainer {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 890px;
+  height: 336px;
+  position: relative;
+  top: 125px;
 }
 
 .ProfilePageButton {
-    width: 889.66px;
-    height: 335px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    background: rgba(8, 120, 48, 0.40);
-    border-radius: 70px;
+  width: 889.66px;
+  height: 335px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: rgba(8, 120, 48, 0.40);
+  border-radius: 70px;
+
 }
 
 .EditProfileButton,
 .LogoutButton {
-    width: 111.87px;
-    height: 39.70px;
-    position: absolute;
+  width: 111.87px;
+  height: 39.70px;
+  position: absolute;
+  z-index: 10;
 }
 
 .EditProfileButton{
-    top: 218px;;
-    left:89px;
+  top: 218px;;
+  left:89px;
 }
 
 .LogoutButton {
-    top: 273px;
-    left: 737px;
+  top: 273px;
+  left: 737px;
 }
 
 .EditProfile,
 .Logout {
-    width: 57.06px;
-    height: 15px;
-    position: absolute;
-    text-align: center;
-    color: black;
-    font-size: 12px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 700;
-    word-wrap: break-word;
+  width: 57.06px;
+  height: 15px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 12px;
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 700;
+  word-wrap: break-word;
 }
 
 .EditProfile {
-    left: 27.47px;
-    top: 5px;
+  left: 27.47px;
+  top: 5px;
 }
 
 .Logout {
-    left: 27.47px;
-    top: 13px;
+  left: 27.47px;
+  top: 13px;
 }
 
 .username {
-    width: 456.45px;
-    height: 48px;
-    left: 267.32px;
-    top: 69px;
-    position: absolute;
+  width: 456.45px;
+  height: 48px;
+  left: 267.32px;
+  top: 69px;
+  position: absolute;
+  z-index: 10;
+
+}
+
+.newProfilePicture{
+  width: 456.45px;
+  height: 48px;
+  left: 267.32px;
+  top: 35px;
+  position: absolute;
+  z-index: 10;
 }
 
 .UsernameLabel,
-.BioLabel {
-    color: black;
-    font-size: 19px;
-    font-family: Inter;
-    font-style: italic;
-    font-weight: 700;
-    word-wrap: break-word;
+.BioLabel, .newProfilePicture {
+  color: black;
+  font-size: 19px;
+  font-family: Inter;
+  font-style: italic;
+  word-wrap: break-word;
+  z-index: 10;
 }
 
 .UsernameValue,
@@ -371,6 +253,19 @@
     font-style: italic;
     font-weight: 300;
     word-wrap: break-word;
+    z-index: 10;
+}
+
+#newProfilePicture{
+    position: relative;
+    top: 35px;
+    left: 450px;
+    z-index: 500;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
 }
 
 .userdescription {
@@ -380,7 +275,9 @@
     top: 105px;
     position: absolute;
     word-wrap: break-word;
-    overflow:hidden;
+    overflow: hidden;
+    z-index: 10;
+
 }
 
 .ProfilePicture {
@@ -390,4 +287,50 @@
     top: 38px;
     position: absolute;
     border-radius: 26px;
+    z-index: 10;
+
+}
+
+.commentheader, .reviewheader {
+    font-size: 30px;
+    font-family: Inter;
+    position: relative;
+    top: 180px;
+    z-index: 10;
+
+}
+
+.editProfileForm{
+    width: 889.66px;
+    height: 335px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    z-index: 10;
+
+}
+
+#username{
+    position: relative;
+    top: 35px;
+    left: 450px;
+    z-index: 500;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
+}
+
+#userdescription {
+    position: relative;
+    top: 35px;
+    left: 450px;
+    z-index: 500;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
+    
 }
