@@ -178,4 +178,4 @@ app.use('/viewfood', viewfoodsRouter);
 app.use('/meals', mealsRouter);
 app.use('/meals-of-the-week', mealsOfTheWeekRouter);
 app.use('/polls', pollsRouter);
-app.use('/', homeRouter);
+app.use('/home', homeRouter);
