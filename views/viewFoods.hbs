@@ -9,36 +9,43 @@
 </head>
 <body>
     <div class="Header">
-        <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
-        <div class="KitchenCityFoodCommunity">
-            <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
-            <span class="KitchenCity">Kitchen City</span>
-            <span> </span>
-            <span class="FoodCommunity">Food Community</span>
-        </div>
-
-        <div class="navis">
-            <div class="search">
-                <input type="text" placeholder="Search">
-            </div>
-            <button class="HomeButton">
-                <a href="http://localhost:3000/home">
-                <div class="Home">HOME</div>
-            </button>
-            <button class="ViewFoodsButton">
-                <a href="http://localhost:3000/viewfood">
-                <div class="ViewFoods">VIEW FOODS</div>
-            </button>
-            <button class="MealsOfTheWeekButton">
-                <a href="http://localhost:3000/meals">
-                <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
-            </button>
-            <button class="ProfileButton">
-                <a href="http://localhost:3000/home">
-                <div class="Profile">PROFILE</div>
-            </button>
-        </div>
-    </div>
+      <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+      <div class="KitchenCityFoodCommunity">
+          <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+          <span class="KitchenCity">Kitchen City</span>
+          <span> </span>
+          <span class="FoodCommunity">Food Community</span>
+      </div>
+      <div class="navis">
+          <div class="search">
+              <input type="text" placeholder="Search">
+          </div>
+          <button class="HomeButton">
+              <a href="http://localhost:3000/">
+              <div class="Home">HOME</div>
+          </button>
+          <a href="http://localhost:3000/polls">
+              <button class="PollButton">
+                  <div class="Poll">POLLS</div>
+              </button>
+          </a>
+          <a href="http://localhost:3000/viewfood">
+              <button class="ViewFoodsButton">
+                  <div class="ViewFoods">VIEW FOODS</div>
+              </button>
+          </a>
+           <a href="http://localhost:3000/meals">
+              <button class="MealsOfTheWeekButton">
+                  <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+              </button>
+          </a>
+           <a href="http://localhost:3000/profile">
+              <button class="ProfileButton">
+                  <div class="Profile">PROFILE</div>
+              </button>
+          </a>
+      </div>
+  </div>
 
     <div class="foodCards">
         {{#each foods}}
