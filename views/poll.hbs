@@ -1,4 +1,3 @@
-<!-- views/poll.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,60 +8,63 @@
 </head>
 <body>
   <div class="Header">
-      <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
-      <div class="KitchenCityFoodCommunity">
-          <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
-          <span class="KitchenCity">Kitchen City</span>
-          <span> </span>
-          <span class="FoodCommunity">Food Community</span>
+    <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+    <div class="KitchenCityFoodCommunity">
+      <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+      <span class="KitchenCity">Kitchen City</span>
+      <span> </span>
+      <span class="FoodCommunity">Food Community</span>
+    </div>
+    <div class="navis">
+      <div class="search">
+        <input type="text" placeholder="Search">
       </div>
-      <div class="navis">
-          <div class="search">
-              <input type="text" placeholder="Search">
-          </div>
-          <button class="HomeButton">
-              <a href="http://localhost:3000/">
-              <div class="Home">HOME</div>
-          </button>
-          <a href="http://localhost:3000/polls">
-              <button class="PollButton">
-                  <div class="Poll">POLLS</div>
-              </button>
-          </a>
-          <a href="http://localhost:3000/viewfood">
-              <button class="ViewFoodsButton">
-                  <div class="ViewFoods">VIEW FOODS</div>
-              </button>
-          </a>
-           <a href="http://localhost:3000/meals">
-              <button class="MealsOfTheWeekButton">
-                  <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
-              </button>
-          </a>
-           <a href="http://localhost:3000/profile">
-              <button class="ProfileButton">
-                  <div class="Profile">PROFILE</div>
-              </button>
-          </a>
-      </div>
+      <a href="http://localhost:3000/">
+        <button class="HomeButton">
+          <div class="Home">HOME</div>
+        </button>
+      </a>
+      <a href="http://localhost:3000/polls">
+        <button class="PollButton">
+          <div class="Poll">POLLS</div>
+        </button>
+      </a>
+      <a href="http://localhost:3000/viewfood">
+        <button class="ViewFoodsButton">
+          <div class="ViewFoods">VIEW FOODS</div>
+        </button>
+      </a>
+      <a href="http://localhost:3000/meals">
+        <button class="MealsOfTheWeekButton">
+          <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+        </button>
+      </a>
+      <a href="http://localhost:3000/profile">
+        <button class="ProfileButton">
+          <div class="Profile">PROFILE</div>
+        </button>
+      </a>
+    </div>
   </div>
-   <div class="content">
+  <div class="content">
     <h3 class="polltitle">Poll</h3>
     <p class="pollquestion">Which meal do you want to see next week?</p>
     
     <div class="poll-options-container">
       {{#each poll.options}}
       <div class="poll-option">
-        <img src="{{pictureUrl}}" alt="{{name}}" class="poll-option-img">
-        <label>{{name}} (Votes: {{votes}})</label>
+        <img src="{{this.pictureUrl}}" alt="{{this.name}}" class="poll-option-img">
+        <label>{{this.name}} (Votes: {{this.votes}})</label>
         <form action="/polls/vote" method="POST">
-          <input type="hidden" name="optionName" value="{{name}}">
+          <input type="hidden" name="optionName" value="{{this.name}}">
           <button type="submit" class="submit-button">Vote</button>
         </form>
       </div>
       {{/each}}
     </div>
   </div>
-  <a class="editpoll" href="/polls/edit/{{poll._id}}">Edit Poll</a>
+  <div class="editpoll-container">
+    <a class="editpoll" href="/polls/edit/{{poll._id}}">Edit Poll</a>
+  </div>
 </body>
 </html>

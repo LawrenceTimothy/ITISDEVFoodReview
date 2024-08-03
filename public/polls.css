@@ -206,14 +206,35 @@
     color: white;
   }
   
-  .editpoll{
+  .editpoll-container {
+    text-align: center;
+    margin-top: 200px; /* Adjust as needed for spacing */
+  }
+  
+  .editpoll {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFB800;
+    color: black;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .editpoll:hover {
+    background-color: #087830;
+    color: white;
+  }
+  
+  .polltitle {
     text-align: center;
   }
-  .polltitle{
-    text-align: center;
-  }
-
-  .pollquestion{
+  
+  .pollquestion {
     text-align: center;
   }
   
