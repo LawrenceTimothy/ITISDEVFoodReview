@@ -302,3 +302,49 @@ button.active {
 }
 
 
+
+
+.editFoodForm {
+  max-width: 600px;
+  margin: 160px auto 0; /* Account for fixed header */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.editFoodForm h1 {
+  text-align: center;
+  color: #087830;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.editFoodForm label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.editFoodForm input[type="text"],
+.editFoodForm input[type="number"],
+.editFoodForm textarea {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editFoodForm textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.editFoodForm button[type="submit"]:hover {
+  background-color: #087830;
+  color: white;
+}
+

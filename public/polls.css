@@ -238,3 +238,58 @@
     text-align: center;
   }
   
+
+  body {
+    font-family: Inter, sans-serif;
+  }
+  
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  form h2 {
+    text-align: center;
+    color: #087830;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  input[type="text"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="text"] {
+    font-size: 16px;
+  }
+  
+  input[type="file"] {
+    border: none;
+  }
+  
+  
+  button[type="submit"]:hover {
+    background-color: #087830;
+    color: white;
+  }
+  
+  div {
+    margin-bottom: 20px;
+  }

@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/polls.css">
+  <title>Edit Poll</title>
+</head>
 <form action="/polls/edit/{{poll._id}}" method="POST" enctype="multipart/form-data">
   <label for="question">Question:</label>
   <input type="text" id="question" name="question" value="{{poll.question}}" required>
