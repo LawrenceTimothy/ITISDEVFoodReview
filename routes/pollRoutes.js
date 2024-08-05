@@ -71,30 +71,38 @@ router.get('/edit/:id', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
-
 // POST: Update poll
-router.post('/edit/:id', upload.array('pictures'), async (req, res) => {
+router.post('/edit/:id', upload.array('pictures', 5), async (req, res) => {
     try {
-        const { question, options, optionId } = req.body;
+        const { question, options } = req.body;
         const files = req.files;
 
-        // Construct the updated options array
-        const updatedOptions = options.map((option, index) => ({
-            _id: optionId[index] || undefined,
-            name: option,
-            pictureUrl: files && files[index] ? files[index].path : undefined,
-            votes: 0 // Default votes if not provided
-        }));
+        const poll = await Poll.findById(req.params.id);
+        if (!poll) {
+            return res.status(404).send('Poll not found');
+        }
 
-        // Remove undefined _id fields for new options
+        const updatedOptions = options.map((option, index) => {
+            const existingOption = poll.options.find(o => o._id.toString() === option.id);
+
+            return {
+                _id: existingOption ? existingOption._id : undefined,
+                name: option.name,
+                pictureUrl: files && files[index] ? `/images/${files[index].filename}` : (existingOption ? existingOption.pictureUrl : undefined),
+                votes: existingOption ? existingOption.votes : 0
+            };
+        });
+
         updatedOptions.forEach(option => {
             if (!option._id) {
                 delete option._id;
             }
         });
 
-        // Update the poll
-        await Poll.findByIdAndUpdate(req.params.id, { question, options: updatedOptions });
+        poll.question = question;
+        poll.options = updatedOptions;
+
+        await poll.save();
         res.redirect('/polls');
     } catch (err) {
         console.error('Error details:', err);

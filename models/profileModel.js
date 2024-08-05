@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
   profilePicture: { type: String, default: '' },
   description: { type: String, default: '' },
   reviews: [String],
-  comments: [String],
+  //comments: [String],
   bookmarkedMeals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Meal' }]
 
 });
