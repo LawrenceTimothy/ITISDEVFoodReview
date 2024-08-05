@@ -19,14 +19,16 @@
 
     <div class="editFoodForm">
         <h1>Edit Food Item</h1>
-        <form action="/viewfood/edit/{{food._id}}" method="POST">
+        <form action="/viewfood/edit/{{food._id}}" method="POST" enctype="multipart/form-data">
             <div>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" value="{{food.name}}" required>
             </div>
             <div>
-                <label for="pictureUrl">Picture URL:</label>
-                <input type="text" id="pictureUrl" name="pictureUrl" value="{{food.pictureUrl}}" required>
+                <label for="picture">Upload Picture:</label>
+                <input type="file" id="picture" name="picture">
+                <p>Current picture:</p>
+                <img src="/images/{{food.pictureUrl}}" alt="Current Food Picture" style="max-width: 200px;">
             </div>
             <div>
                 <label for="overallRating">Overall Rating:</label>
