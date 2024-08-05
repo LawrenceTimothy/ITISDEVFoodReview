@@ -54,6 +54,10 @@
       {{#each poll.options}}
       <div class="poll-option">
         <img src="{{this.pictureUrl}}" alt="{{this.name}}" class="poll-option-img">
+        <div class="poll-option-details">
+          <label>{{this.name}}</label>
+          <p>Calorie Count: {{this.calorieCount}}</p>
+        </div>
         <label>{{this.name}} (Votes: {{this.votes}})</label>
         <form action="/polls/vote" method="POST">
           <input type="hidden" name="optionName" value="{{this.name}}">

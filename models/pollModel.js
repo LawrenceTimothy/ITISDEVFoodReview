@@ -6,6 +6,7 @@ const pollSchema = new mongoose.Schema({
     {
       name: { type: String, required: true },
       pictureUrl: { type: String },
+      calorieCount: { type: Number },
       votes: { type: Number, default: 0 }
     }
   ]

@@ -3,113 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="stylesheet" href="/home.css">
-      <script src="/js/button.js" defer></script>
+    <link rel="stylesheet" href="/home.css">
+    <script src="/js/button.js" defer></script>
     <title>Kitchen City Food Community - Home</title>
 </head>
 <body>
     <h1>Welcome, {{user}}!</h1>
     <form action="/logout" method="get">
-
-    <button type="submit">Logout</button>
-    
+        <button type="submit">Logout</button>
     </form>
     <div class="Header">
-    <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
-    <div class="KitchenCityFoodCommunity">
-      <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
-      <span class="KitchenCity">Kitchen City</span>
-      <span> </span>
-      <span class="FoodCommunity">Food Community</span>
-    </div>
-    <div class="navis">
-      <div class="search">
-        <input type="text" placeholder="Search">
-      </div>
-      <button class="HomeButton">
-        <a href="http://localhost:3000/home">
-          <div class="Home">HOME</div>
-        </a>
-      </button>
-      <button class="PollButton">
-        <a href="http://localhost:3000/polls">
-          <div class="Poll">POLL</div>
-        </a>
-      </button>
-      <button class="ViewFoodsButton">
-        <a href="http://localhost:3000/viewfood">
-          <div class="ViewFoods">VIEW FOODS</div>
-        </a>
-      </button>
-      <button class="MealsOfTheWeekButton">
-        <a href="http://localhost:3000/meals">
-          <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
-        </a>
-      </button>
-      <button class="ProfileButton">
-        <a href="http://localhost:3000/profile">
-          <div class="Profile">PROFILE</div>
-        </a>
-      </button>
-    </div>
-  </div>
-  
-  <div class="content">
-    <h1>Welcome to Kitchen City Food Community</h1>
-    <p>Today's Date: {{today}}</p>
-
-    <h2 class="title">Meals of the Week</h2>
-    <div class="meals-container">
-      {{#each mealsOfTheWeek}}
-        <div class="meal-item">
-          <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
-          <h2>{{name}}</h2>
-          <p>Description: {{description}}</p>
-          <p>Price: Php{{price}}</p>
-          <p>Start Date: {{startDate}}</p>
-          <p>End Date: {{endDate}}</p>
+        <img src="/images/DLSU-night.jpg" alt="Header Background" class="HeaderBackground"/>
+        <div class="KitchenCityFoodCommunity">
+            <img src="/images/logo.png" alt="Kitchen City Logo" class="Logo1" />
+            <span class="KitchenCity">Kitchen City</span>
+            <span> </span>
+            <span class="FoodCommunity">Food Community</span>
         </div>
-      {{/each}}
+        <div class="navis">
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="HomeButton">
+                <a href="http://localhost:3000/home">
+                    <div class="Home">HOME</div>
+                </a>
+            </button>
+            <button class="PollButton">
+                <a href="http://localhost:3000/polls">
+                    <div class="Poll">POLL</div>
+                </a>
+            </button>
+            <button class="ViewFoodsButton">
+                <a href="http://localhost:3000/viewfood">
+                    <div class="ViewFoods">VIEW FOODS</div>
+                </a>
+            </button>
+            <button class="MealsOfTheWeekButton">
+                <a href="http://localhost:3000/meals">
+                    <div class="MealsOfTheWeek">MEALS OF THE WEEK</div>
+                </a>
+            </button>
+            <button class="ProfileButton">
+                <a href="http://localhost:3000/profile">
+                    <div class="Profile">PROFILE</div>
+                </a>
+            </button>
+        </div>
     </div>
 
-    <h2 class="title">Poll</h2>
-    <div class="poll-container">
-      <h3>{{poll.question}}</h3>
-      <div class="poll-options">
-        {{#each poll.options}}
-          <div class="poll-item">
-            <img src="{{pictureUrl}}" alt="{{name}}" style="width:100px; height:100px;">
-            <span>{{name}} (Votes: {{votes}})</span>
-            <form action="/polls/vote" method="POST" class="poll-form">
-              <input type="hidden" name="optionName" value="{{name}}">
-              <button type="submit">Vote</button>
-            </form>
-          </div>
-        {{/each}}
-      </div>
-      <a href="/polls/edit/{{poll._id}}">Edit Poll</a>
+    <div class="content">
+        <h1>Welcome to Kitchen City Food Community</h1>
+        <p>Today's Date: {{today}}</p>
+
+        <h2 class="title">Meals of the Week</h2>
+        <div class="meals-container">
+            {{#each mealsOfTheWeek}}
+                <div class="meal-item">
+                    <img src="{{pictureUrl}}" alt="{{name}}" style="max-width: 200px; max-height: 200px;">
+                    <h2>{{name}}</h2>
+                    <p>Description: {{description}}</p>
+                    <p>Price: Php{{price}}</p>
+                    <p>Calorie Count: {{calorieCount}}</p>
+                    <p>Start Date: {{startDate}}</p>
+                    <p>End Date: {{endDate}}</p>
+                </div>
+            {{/each}}
+        </div>
+
+        <h2 class="title">Poll</h2>
+        <div class="poll-container">
+            <h3>{{poll.question}}</h3>
+            <div class="poll-options">
+                {{#each poll.options}}
+                    <div class="poll-item">
+                        <img src="{{pictureUrl}}" alt="{{name}}" style="width:100px; height:100px;">
+                        <span>{{name}} (Votes: {{votes}})</span>
+                        <p>Calorie Count: {{calorieCount}}</p>
+                        <form action="/polls/vote" method="POST" class="poll-form">
+                            <input type="hidden" name="optionName" value="{{name}}">
+                            <button type="submit">Vote</button>
+                        </form>
+                    </div>
+                {{/each}}
+            </div>
+            <a href="/polls/edit/{{poll._id}}">Edit Poll</a>
+        </div>
     </div>
-  </div>
-  
-  <script>
-    document.querySelectorAll('.poll-form').forEach(form => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData
+
+    <script>
+        document.querySelectorAll('.poll-form').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                if (response.ok) {
+                    window.location.reload(); // Refresh the page to update the poll results
+                } else {
+                    console.error('Vote failed');
+                }
+            });
         });
-        if (response.ok) {
-          window.location.reload(); // Refresh the page to update the poll results
-        } else {
-          console.error('Vote failed');
-        }
-      });
-    });
-  </script>
-
-    
-
+    </script>
 </body>
 </html>

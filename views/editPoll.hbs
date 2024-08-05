@@ -18,6 +18,9 @@
         <input type="text" id="option-{{index}}" name="options[{{index}}][name]" value="{{option.name}}" required>
         <input type="hidden" name="options[{{index}}][id]" value="{{option._id}}">
 
+        <label for="calorieCount-{{index}}">Calorie Count:</label>
+        <input type="number" id="calorieCount-{{index}}" name="options[{{index}}][calorieCount]" value="{{option.calorieCount}}" required>
+
         <label for="picture-{{index}}">Upload Image:</label>
         <input type="file" id="picture-{{index}}" name="pictures">
       </div>

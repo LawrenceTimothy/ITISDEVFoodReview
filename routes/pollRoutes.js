@@ -88,6 +88,7 @@ router.post('/edit/:id', upload.array('pictures', 5), async (req, res) => {
             return {
                 _id: existingOption ? existingOption._id : undefined,
                 name: option.name,
+                calorieCount: option.calorieCount,
                 pictureUrl: files && files[index] ? `/images/${files[index].filename}` : (existingOption ? existingOption.pictureUrl : undefined),
                 votes: existingOption ? existingOption.votes : 0
             };
