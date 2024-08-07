@@ -57,6 +57,7 @@
             <div class="ingredients">
                 <span>INGREDIENTS:<br/></span>
                 <span>{{#each ingredients}}<br/> {{this}}{{#unless @last}}, {{/unless}}
+                
                 {{/each}}</span>
             </div>
             <div class="CalorieCount">
@@ -67,10 +68,15 @@
                 <span>Best Partnered With:</span>
                 <span> {{bestPartneredWith}}</span>
             </div>
-            <button class="EditButton">
-                <a href="/viewfood/edit/{{this._id}}">Edit</a>
-                <div class="Edit">EDIT</div>
+            <button class="EditButton" onclick="location.href='/viewfood/edit/{{this._id}}'">
+                EDIT
             </button>
+            <button class="ReviewButton" onclick="location.href='/foods/{{this._id}}/reviews'">
+                REVIEW
+            </button>
+            
+
+            
         </div>
         {{/each}}
     </div>

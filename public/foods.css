@@ -348,3 +348,10 @@ button.active {
   color: white;
 }
 
+.EditButton {
+
+}
+
+.ReviewButton {
+  margin-left: 110px;
+}
